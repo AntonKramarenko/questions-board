@@ -1,11 +1,12 @@
 import React from 'react'
+import { ExamInfo } from '../../components/componentsPage/ExamInfo'
 import { PageHeader } from '../../components/componentsPage/PageHeader'
 import './NewExam.scss'
 
 export const NewExam = () => {
     
   return (
-    <div className='newExam'>
+    <section className='newExam'>
         <PageHeader 
           title='New Exam Title Here' 
           clickReject={console.log} 
@@ -13,9 +14,9 @@ export const NewExam = () => {
           titleReject='Delete Exam' 
           titleApprove='Save Exam'
         />
-        
-        <span>NewExam</span>
-        
+        <div className="newExam__info">
+         <ExamInfo/>
         </div>
+     </section>
   )
 }

@@ -38,6 +38,7 @@ const location  = () => {
        
         <h1 className="pageHeader__info-title">{title}</h1>
       </div>
+      {/* buttom -> componentsUI */}
       <div className="pageHeader__actions">
         <button className='pageHeader__actions-btn'>
           <img src={RejectImg} alt="" />

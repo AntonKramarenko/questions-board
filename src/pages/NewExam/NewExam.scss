@@ -1,3 +1,10 @@
 .newExam{
     padding: 0 24px;
+
+
+    &__info{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+    }
+    
 }

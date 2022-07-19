@@ -1,0 +1,22 @@
+@import '../../../styles/main.scss';
+@import '../../../styles/colors.scss';
+
+.examInfoSmall{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding: 16px;
+    border-radius: $radius;
+    background-color: $color-primary-ligth;
+
+    &__title{
+        color: $color-primary-dark;
+        font-size: 0.7rem;
+        font-weight: 400;
+    }
+
+    &__value{
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $color-primary-active;
+    }
+}

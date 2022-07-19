@@ -1,0 +1,25 @@
+@import '../../../styles/main.scss';
+@import '../../../styles/colors.scss';
+
+.examInfoLarge{
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: $radius;
+    background-color: $color-primary-ligth;
+
+
+    span {
+        margin: 0 auto;
+        width: 95%;
+        height: 1px ;
+        background-color: #D0E8EF;
+    }
+
+    
+}
