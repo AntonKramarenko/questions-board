@@ -7,6 +7,13 @@
     padding: 16px;
     border-radius: $radius;
     background-color: $color-primary-ligth;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    &__info{
+        margin-left: 20px ;
+    }
 
     &__title{
         color: $color-primary-dark;
@@ -18,5 +25,10 @@
         font-size: 1.1rem;
         font-weight: 600;
         color: $color-primary-active;
+    }
+
+    img{
+        width: 32px;
+        height: 32px;
     }
 }

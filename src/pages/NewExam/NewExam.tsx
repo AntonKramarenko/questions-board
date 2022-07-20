@@ -1,6 +1,7 @@
 import React from 'react'
 import { ExamInfo } from '../../components/componentsPage/ExamInfo'
 import { PageHeader } from '../../components/componentsPage/PageHeader'
+import { SchoolsBoard } from '../../components/componentsPage/SchoolsBoard'
 import './NewExam.scss'
 
 export const NewExam = () => {
@@ -15,7 +16,8 @@ export const NewExam = () => {
           titleApprove='Save Exam'
         />
         <div className="newExam__info">
-         <ExamInfo/>
+          <ExamInfo/>
+          <SchoolsBoard/>
         </div>
      </section>
   )

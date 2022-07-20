@@ -1,0 +1,19 @@
+@import '../../../styles/colors.scss';
+.schoolBoardItem{
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    position: relative;
+
+    div{
+        margin-left: 12px;
+    }
+    input{
+    position: absolute;
+    right: 16px;
+    }
+}
+
+.schoolBoardItem:hover{
+    background: $color-primary-ligth;
+}

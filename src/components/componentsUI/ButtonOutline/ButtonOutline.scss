@@ -1,0 +1,11 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/main.scss';
+.buttonOutline{
+    background: transparent;
+    border: 1px solid  $color-primary-active;
+    padding: 10px;
+    border-radius: $radius;
+    color: $color-primary-active;
+    font-weight: 600;
+    font-size: 1rem;
+}
