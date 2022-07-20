@@ -23,9 +23,12 @@
     }
 
     &__body-item{
+        border:$border ;
+        border-radius: $radius;
         background-color: $color-primary-ligth;
         border-radius: $radius;
         display: flex;
+        align-items: center;
         padding: 16px;
 
         span{

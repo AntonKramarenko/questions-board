@@ -1,17 +1,28 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { CeateQuestion } from '../../components/componentsPage/CeateQuestion'
 import { PageHeader } from '../../components/componentsPage/PageHeader'
 import './AddQuestionPage.scss'
 
 export const AddQuestionPage = () => {
+  const navigate = useNavigate()
+
+  const clickRejectHandler =()=>{
+    navigate('/exams/New-Exam-Title-Here')
+  }
+
+  const clickApproveHandler =()=>{
+    console.log('clickApproveHandler');
+  }
+
   return (
     <div className='addQuestionPage'>
         <PageHeader  
         title='Add Question' 
-          clickReject={console.log} 
-          clickApprove={console.log} 
-          titleReject='Delete Exam' 
-          titleApprove='Save Exam'
+          clickReject={()=> clickRejectHandler()} 
+          clickApprove={()=>clickApproveHandler()} 
+          titleReject='Delete Question' 
+          titleApprove='Save Question'
           />
           <div className="addQuestionPage__box">
             <CeateQuestion/>

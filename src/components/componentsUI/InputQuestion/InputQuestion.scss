@@ -1,9 +1,12 @@
 @import '../../../styles/colors.scss';
+@import '../../../styles/main.scss';
 
 .inputQuestion{
 display: flex;
 padding: 16px;
 background-color: $color-primary-ligth;
+border:$border ;
+border-radius: $radius;
 
 img{
     width: 32px;

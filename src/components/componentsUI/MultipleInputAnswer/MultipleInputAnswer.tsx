@@ -1,11 +1,16 @@
 import React from 'react'
+import { UniversalInput } from '../UniversalInput'
 import './MultipleInputAnswer.scss'
 
-export const MultipleInputAnswer = () => {
+interface IMultipleInputAnswer{
+    id:string
+}
+
+export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = () => {
   return (
     <div className='multipleInputAnswer'>
         <input type="checkbox" />
-        <input type="text" className='multipleInputAnswer__text' placeholder='Answer Text...'/>
+        <UniversalInput placeholder='Answer Text...'/>
     </div>
   )
 }

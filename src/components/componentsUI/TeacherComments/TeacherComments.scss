@@ -1,6 +1,13 @@
+@import '../../../styles/main.scss';
+@import '../../../styles/colors.scss';
+
 .teacherComments{
+    background-color: $color-primary-ligth;
     width: 100%;
     display: flex;
+    border:$border ;
+    border-radius: $radius;
+    padding: 16px;
 
     img{
         width: 32px;

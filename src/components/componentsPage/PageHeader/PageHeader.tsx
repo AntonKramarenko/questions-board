@@ -40,10 +40,10 @@ const location  = () => {
       </div>
       {/* buttom -> componentsUI */}
       <div className="pageHeader__actions">
-        <button className='pageHeader__actions-btn'>
+        <button className='pageHeader__actions-btn' onClick={clickReject}>
           <img src={RejectImg} alt="" />
           {titleReject}</button>
-        <button className='pageHeader__actions-btn active'>
+        <button className='pageHeader__actions-btn active' onClick={clickApprove}>
         <img src={ApproveImg} alt="" />
           {titleApprove}</button>
       </div>

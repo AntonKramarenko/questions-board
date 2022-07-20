@@ -11,14 +11,14 @@ export const MatchingTypeQuestion = () => {
         <div className="matchingTypeQuestion__questions-body">
             <div className="matchingTypeQuestion__body-title question">Question</div>
             <div className="matchingTypeQuestion__body-title answer">Correct Answer</div>
-            <div className="matchingTypeQuestion__body-item question"> <span>1.</span> <UniversalInput/></div>
-            <div className="matchingTypeQuestion__body-item answer"><UniversalInput/></div>
-            <div className="matchingTypeQuestion__body-item question"><span>2.</span>  <UniversalInput/></div>
-            <div className="matchingTypeQuestion__body-item answer"><UniversalInput/></div>
-            <div className="matchingTypeQuestion__body-item question"><span>3.</span>  <UniversalInput/></div>
-            <div className="matchingTypeQuestion__body-item answer"><UniversalInput/></div>
-            <div className="matchingTypeQuestion__body-item question"><span>4.</span>  <UniversalInput/></div>
-            <div className="matchingTypeQuestion__body-item answer"><UniversalInput/></div>
+            <div className="matchingTypeQuestion__body-item question"> <span>1.</span> <UniversalInput placeholder='Question Text'/></div>
+            <div className="matchingTypeQuestion__body-item answer"><UniversalInput placeholder='Answer Text'/></div>
+            <div className="matchingTypeQuestion__body-item question"><span>2.</span>  <UniversalInput placeholder='Question Text'/></div>
+            <div className="matchingTypeQuestion__body-item answer"><UniversalInput placeholder='Answer Text'/></div>
+            <div className="matchingTypeQuestion__body-item question"><span>3.</span>  <UniversalInput placeholder='Question Text'/></div>
+            <div className="matchingTypeQuestion__body-item answer"><UniversalInput placeholder='Answer Text'/></div>
+            <div className="matchingTypeQuestion__body-item question"><span>4.</span>  <UniversalInput placeholder='Question Text'/></div>
+            <div className="matchingTypeQuestion__body-item answer"><UniversalInput placeholder='Answer Text'/></div>
         </div>
         <div className="matchingTypeQuestion__title">3. Points</div>
         <AnswerPoints/>

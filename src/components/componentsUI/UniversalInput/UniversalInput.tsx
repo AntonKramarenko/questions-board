@@ -1,11 +1,16 @@
 import React from 'react'
 import './UniversalInput.scss'
+import InputLogo from '../../../assets/icons/mountain.png'
 
-export const UniversalInput = () => {
+interface IUniversalInput{
+  placeholder: string
+}
+
+export const UniversalInput:React.FC<IUniversalInput> = ({placeholder}) => {
   return (
     <div className='universalInput'>
-        <input type="text"  placeholder='placeholder'/>
-        <button>f</button>
+        <input type="text"  placeholder={placeholder}/>
+        <img src={InputLogo} alt="" />
     </div>
   )
 }

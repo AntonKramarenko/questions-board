@@ -31,7 +31,7 @@ export const SchoolsBoard = () => {
                <SchoolBoardItem/>
             </ul>
         </div>
-        <ButtonOutline/>
+        <ButtonOutline btnName='Assign To Class' click={console.log}/>
     </section>
   )
 }

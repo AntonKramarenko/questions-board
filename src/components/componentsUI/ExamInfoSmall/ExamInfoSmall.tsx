@@ -1,14 +1,19 @@
 import React from 'react'
 import './ExamInfoSmall.scss'
-import logo from '../../../assets/img/graduetion_cap.png'
 
-export const ExamInfoSmall = () => {
+interface IExamInfoSmall{
+  infoImg:any,
+  title:string,
+  value: string
+}
+
+export const ExamInfoSmall:React.FC<IExamInfoSmall> = ({infoImg,title,value}) => {
   return (
     <div className='examInfoSmall'>
-        <img src={logo} alt="" />
+        <img src={infoImg} alt="" />
        <div className="examInfoSmall__info">
-           <h2 className="examInfoSmall__title">Grade</h2>
-           <div className="examInfoSmall__value">Grade 1</div>
+           <h2 className="examInfoSmall__title">{title}</h2>
+           <div className="examInfoSmall__value">{value}</div>
        </div>
     </div>
   )
