@@ -1,0 +1,19 @@
+.universalInput{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    input{
+        border: none;
+        width: 100%;
+        outline: none;
+    }
+
+    button {
+        width: 20px;
+        height: 20px;
+        color: grey;
+        background-color: transparent;
+        border: 1px solid grey;
+    }
+}

@@ -1,0 +1,48 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/main.scss';
+
+.matchingTypeQuestion{
+
+    &__title{
+        font-size: 1rem;
+        margin: 20px 0 12px 0;
+    }
+
+
+    &__questions-body{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows:20px repeat(4,1fr);
+        gap: 10px;
+    }
+
+    &__body-title {
+        color: $color-primary-active;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+
+    &__body-item{
+        background-color: $color-primary-ligth;
+        border-radius: $radius;
+        display: flex;
+        padding: 16px;
+
+        span{
+            color: $color-primary-active;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+    }
+}
+
+// .question{
+//     grid-column-start: 1;
+// }
+
+// .answer{
+//     grid-column-start: 2;
+// }
+
