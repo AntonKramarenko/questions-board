@@ -7,7 +7,7 @@ import { ButtonOutline } from '../../componentsUI/ButtonOutline'
 
 export const SchoolsBoard = () => {
   return (
-    <div className='schoolsBoard'>
+    <section className='schoolsBoard'>
         <div className="schoolsBoard__header">
             <img src={TeacherLogo} alt="" />
             Assigned Teachers
@@ -32,6 +32,6 @@ export const SchoolsBoard = () => {
             </ul>
         </div>
         <ButtonOutline/>
-    </div>
+    </section>
   )
 }

@@ -1,0 +1,12 @@
+.questionsBox{
+    border: 1px solid black;
+    grid-row-start: 3;
+    grid-column-start: 1;
+    grid-column-end:4 ;
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

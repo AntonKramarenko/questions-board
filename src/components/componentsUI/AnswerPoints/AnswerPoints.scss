@@ -1,0 +1,24 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/main.scss';
+
+.answerPoints{
+
+    &__values{
+        display: flex;
+        align-items: center;
+        margin: 12px 0;
+    }
+
+    &__value{
+        width: 32px;
+        height: 32px;
+        background-color: $color-primary-active;
+        border-radius: $radius;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $color-primary-ligth;
+        font-size: 1.3rem;
+        margin-right: 8px;
+    }
+}

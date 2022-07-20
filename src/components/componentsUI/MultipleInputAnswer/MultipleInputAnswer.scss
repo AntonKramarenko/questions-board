@@ -1,0 +1,17 @@
+@import '../../../styles/colors.scss';
+
+.multipleInputAnswer{
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    background-color: $color-primary-ligth;
+    height: auto;
+    padding: 16px;
+
+    &__text{
+        border: none;
+        width: 100%;
+        outline: none;
+        color: $color-primary;
+    }
+}
