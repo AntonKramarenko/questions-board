@@ -10,7 +10,7 @@ export const MatchingTypeQuestion = () => {
         <div className="matchingTypeQuestion__title">2. Questions / Answers</div>
         <div className="matchingTypeQuestion__questions-body">
             <div className="matchingTypeQuestion__body-title question">Question</div>
-            <div className="matchingTypeQuestion__body-title answer">answer</div>
+            <div className="matchingTypeQuestion__body-title answer">Correct Answer</div>
             <div className="matchingTypeQuestion__body-item question"> <span>1.</span> <UniversalInput/></div>
             <div className="matchingTypeQuestion__body-item answer"><UniversalInput/></div>
             <div className="matchingTypeQuestion__body-item question"><span>2.</span>  <UniversalInput/></div>

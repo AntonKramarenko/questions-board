@@ -1,0 +1,56 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/main.scss';
+
+.questionTypeSelect{
+    position: relative;
+    &__currentValue{
+        background-color: $color-primary-ligth;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border:$border ;
+        border-radius: $radius;
+        cursor: pointer;
+    }
+
+    &__body{
+        position: absolute;
+        right: 0;
+        left: 0;
+        background-color: $color-primary-ligth;
+        cursor: pointer;
+
+        &-values{
+            border:$border ;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            color: $color-primary;
+        }
+
+        img{
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+        }
+
+        &-values:hover{
+            transition: all 0.5s;
+            color: $color-primary-active;
+        }
+    }
+    
+
+    &__value{
+        display: flex;
+        align-items: center;
+        color: $color-primary-active;
+
+        img{
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+        }
+    }
+}

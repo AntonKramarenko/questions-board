@@ -8,7 +8,6 @@
         margin: 20px 0 12px 0;
     }
 
-
     &__questions-body{
         display: grid;
         grid-template-columns: repeat(2,1fr);
@@ -38,11 +37,11 @@
     }
 }
 
-// .question{
-//     grid-column-start: 1;
-// }
+.question{
+    grid-column-start: 1;
+}
 
-// .answer{
-//     grid-column-start: 2;
-// }
+.answer{
+    grid-column-start: 2;
+}
 
