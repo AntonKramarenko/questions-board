@@ -2,15 +2,24 @@
 @import '../../../styles/main.scss';
 
 .inputQuestion{
-display: flex;
+    display: flex;
+    flex-direction: column;
 padding: 16px;
 background-color: $color-primary-ligth;
 border:$border ;
 border-radius: $radius;
 
-img{
-    width: 32px;
-    height: 32px;
+&__header{
+    display: flex;
+
+    img{
+        width: 32px;
+        height: 32px;
+    }
+    
+    input[type=file]{
+        display: none;
+    }
 }
 
 input{

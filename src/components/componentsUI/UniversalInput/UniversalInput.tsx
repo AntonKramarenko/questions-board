@@ -6,7 +6,7 @@ interface IUniversalInput{
   placeholder: string,
   selectImages:string[],
   setSelectImages:([]) => void,
-  id?: string
+  id: string
 }
 
 export const UniversalInput:React.FC<IUniversalInput> = ({placeholder, selectImages,setSelectImages,id}) => {

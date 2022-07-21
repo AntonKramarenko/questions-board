@@ -7,9 +7,10 @@
     margin: 16px;
     border: $border;
     border-radius: $radius;
-
+    overflow: hidden;
 
     img{
+        object-fit:contain;
         width: 100%;
         height: auto;
     }
