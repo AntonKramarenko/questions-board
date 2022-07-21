@@ -1,20 +1,24 @@
 @import '../../../styles/main.scss';
 
 .universalInput{
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    input{
-        border: none;
+        display: flex;
+        align-items: center;
         width: 100%;
-        outline: none;
-    }
+    
+        input{
+            border: none;
+            width: 100%;
+            outline: none;
+        }
 
-    img{
-        width: 32px;
-        height: 32px;
-        border-radius: $radius;
-        
-    }
+        input[type=file]{
+            display: none;
+        }
+    
+        img{
+            width: 32px;
+            height: 32px;
+            border-radius: $radius;
+            
+        }
 }

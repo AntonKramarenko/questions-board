@@ -1,7 +1,6 @@
 import React from 'react'
 import { ExamInfo } from '../../components/componentsPage/ExamInfo'
 import { PageHeader } from '../../components/componentsPage/PageHeader'
-import { QuestionsBox } from '../../components/componentsPage/QuestionsBox'
 import { SchoolsBoard } from '../../components/componentsPage/SchoolsBoard'
 import './NewExam.scss'
 

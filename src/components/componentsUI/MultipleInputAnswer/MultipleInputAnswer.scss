@@ -2,20 +2,23 @@
 @import '../../../styles//main.scss';
 
 .multipleInputAnswer{
-    margin: 12px 0;
-    display: flex;
-    align-items: center;
     background-color: $color-primary-ligth;
-    height: auto;
-    padding: 16px;
     border:$border ;
     border-radius: $radius;
-
-    &__text{
-        margin-left: 10px;
-        border: none;
-        width: 100%;
-        outline: none;
-        color: $color-primary;
+    margin: 12px 0;
+    
+    &__header{
+        display: flex;
+        display: flex;
+        align-items: center;
+        padding: 16px;
+    
+        &__text{
+            margin-left: 10px;
+            border: none;
+            width: 100%;
+            outline: none;
+            color: $color-primary;
+        }
     }
 }

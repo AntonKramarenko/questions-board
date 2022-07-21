@@ -1,0 +1,16 @@
+@import '../../../styles/main.scss';
+.selectImgQuestion{
+    max-width: 160px;
+    width: 100%;
+    max-height: 160px;
+    height: 100%;
+    margin: 16px;
+    border: $border;
+    border-radius: $radius;
+
+
+    img{
+        width: 100%;
+        height: auto;
+    }
+}

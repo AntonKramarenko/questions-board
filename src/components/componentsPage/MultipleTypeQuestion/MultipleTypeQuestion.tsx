@@ -19,7 +19,9 @@ export const MultipleTypeQuestion = () => {
         <div className="multipleTypeQuestion__title">2. Question</div>
         <InputQuestion/>
         <div className="multipleTypeQuestion__title">3. Answers <span>(please tick the correct answers)</span></div>
-        {answersCount.map(ans =>  <MultipleInputAnswer key={ans} id={ans}/>)}
+        {
+          answersCount.map(ans =>  <MultipleInputAnswer key={ans} id={ans}/>)
+        }
         <ButtonOutline btnName='Add Answer' click={()=>addInputAnswerHandler()}/>
         <div className="multipleTypeQuestion__title">4. Points</div>
         <AnswerPoints/>
