@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { AnswerPoints } from '../../componentsUI/AnswerPoints'
 import { TeacherComments } from '../../componentsUI/TeacherComments/TeacherComments'
-import { UniversalInput } from '../../componentsUI/UniversalInput'
 import { MatchingQuestionItem } from './MatchingQuestionItem/MatchingQuestionItem'
 import './MatchingTypeQuestion.scss'
 
@@ -13,10 +12,10 @@ export const MatchingTypeQuestion = () => {
         <div className="matchingTypeQuestion__questions-body">
             <div className="matchingTypeQuestion__body-title question">Question</div>
             <div className="matchingTypeQuestion__body-title answer">Correct Answer</div>
-            <MatchingQuestionItem/>
-            <MatchingQuestionItem/>
-            <MatchingQuestionItem/>
-            <MatchingQuestionItem/>
+            <MatchingQuestionItem id='1'/>
+            <MatchingQuestionItem id='2'/>
+            <MatchingQuestionItem id='3'/>
+            <MatchingQuestionItem id='4'/>
         </div>
         <div className="matchingTypeQuestion__title">3. Points</div>
         <AnswerPoints/>

@@ -8,14 +8,18 @@ interface IMultipleInputAnswer{
     id:string
 }
 
-export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = () => {
+export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id}) => {
   const [selectImages,setSelectImages] = useState<string[]>([])
 
   return (
     <div className='multipleInputAnswer'>
       <div className="multipleInputAnswer__header">
         <input type="checkbox" />
-        <UniversalInput placeholder='Answer Text...' selectImages={selectImages} setSelectImages={setSelectImages}/>
+        <UniversalInput 
+          id={id}
+          placeholder='Answer Text...' 
+          selectImages={selectImages} 
+          setSelectImages={setSelectImages}/>
       </div>
       {selectImages.length>0  && <SelectImagesBox images={selectImages}/>}
     </div>

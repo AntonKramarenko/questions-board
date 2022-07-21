@@ -1,35 +1,42 @@
 import React, { useState } from 'react'
 import { SelectImagesBox } from '../../../componentsUI/SelectImagesBox'
 import { UniversalInput } from '../../../componentsUI/UniversalInput'
+import './MatchingQuestionItem.scss'
 
-export const MatchingQuestionItem = () => {
+interface IMatchingQuestionItem{
+    id:string
+}
+
+export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id}) => {
     const [imagesQuestion,setImagesQuestion] = useState<string[]>([])
     const [imagesAnswer,setImagesAnswer] = useState<string[]>([])
 
-    //useMemo must
-    const renderSelectImg = (sourse:string[]) =>{
-    return sourse.map(img => {return <img key={img} src={img} alt={img} /> })
-    }
 
   return (
     <>
-    <div className="matchingTypeQuestion__body-item question">  
-        <span>1.</span> 
-        <UniversalInput 
-            placeholder='Question Text' 
-            selectImages={imagesQuestion} 
-            setSelectImages={setImagesQuestion} 
-        />
+    <div className="matchingQuestionItem question"> 
+        <div className="matchingQuestionItem__header">
+            <span>1.</span> 
+            <UniversalInput 
+                id={id+ 'question'}
+                placeholder='Question Text' 
+                selectImages={imagesQuestion} 
+                setSelectImages={setImagesQuestion} 
+            />
+        </div> 
         {imagesQuestion.length>0  && <SelectImagesBox images={imagesQuestion}/>}
     </div>
 
     <div 
-    className="matchingTypeQuestion__body-item answer">
+    className="matchingQuestionItem answer">
+        <div className="matchingQuestionItem__header">
         <UniversalInput 
+            id={id + 'answer'}
             placeholder='Answer Text' 
             selectImages={imagesAnswer} 
             setSelectImages={setImagesAnswer}
         />
+        </div>
          {imagesAnswer.length>0  && <SelectImagesBox images={imagesAnswer}/>}
     </div>
     </>

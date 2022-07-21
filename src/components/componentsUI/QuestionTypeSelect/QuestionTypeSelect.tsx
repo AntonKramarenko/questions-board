@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './QuestionTypeSelect.scss'
 import { IoCaretDownOutline,IoCaretUpOutline } from "react-icons/io5";
 import ThinkLogo from '../../../assets/img/think.png'
-import { isVisible } from '@testing-library/user-event/dist/utils';
+
 
 interface IQuestionTypeSelect{
   questonType:string,

@@ -1,0 +1,23 @@
+@import '../../../../styles/main.scss';
+@import '../../../../styles/colors.scss';
+.matchingQuestionItem{
+    display: flex;
+    flex-direction: column;
+    border:$border ;
+    border-radius: $radius;
+    background-color: $color-primary-ligth;
+
+    &__header{
+        border-radius: $radius;
+        display: flex;
+        align-items: center;
+        padding: 16px;
+
+        span{
+            color: $color-primary-active;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+    }
+}

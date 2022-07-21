@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { AnswerPoints } from '../../componentsUI/AnswerPoints'
 import { ButtonOutline } from '../../componentsUI/ButtonOutline'
 import { InputQuestion } from '../../componentsUI/InputQuestion'
