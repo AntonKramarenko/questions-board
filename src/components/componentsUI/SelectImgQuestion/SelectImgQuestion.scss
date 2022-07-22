@@ -1,4 +1,5 @@
 @import '../../../styles/main.scss';
+@import '../../../styles/colors.scss';
 .selectImgQuestion{
     max-width: 160px;
     width: 100%;
@@ -8,8 +9,28 @@
     border: $border;
     border-radius: $radius;
     overflow: hidden;
+    position: relative;
 
-    img{
+    &__trash{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: $radius;
+        background-color: $color-background;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+
+        &-img{
+            width: 14px;
+            height: 18px;
+        }
+    }
+
+    &__main{
         object-fit:contain;
         width: 100%;
         height: auto;

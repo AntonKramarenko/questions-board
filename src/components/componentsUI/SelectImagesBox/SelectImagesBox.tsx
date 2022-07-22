@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './SelectImagesBox.scss'
 import { SelectImgQuestion } from '../SelectImgQuestion'
 
@@ -8,18 +8,27 @@ interface ISelectImagesBox{
 
 export const SelectImagesBox: React.FC<ISelectImagesBox> = ({images}) => {
 
+  const [imageSselect, setImageSselect] = useState<string[]>(images)
 
-     //useMemo must
+  useEffect(()=>{
+    setImageSselect(images)
+  },[images])
+
+     //useMemo use
 //   const renderSelectImg = (sourse:string[]) =>{
 //     return sourse.map((img:string) => {      
 //         return <SelectImgQuestion img={img} key={img}/>
 //     })
 //   }
 
+  const deleteImgHandler =(idImg:string)=>{
+    setImageSselect(imageSselect.filter((img:string) => img !== idImg))
+  }
+
   return (
     <div className='selectImagesBox'>
         {
-            images.map((img:string) => <SelectImgQuestion img={img} key={img}/>)
+            imageSselect.map((img:string) => <SelectImgQuestion img={img} key={img} clickTrash={deleteImgHandler}/>)
         }
     </div>
   )
