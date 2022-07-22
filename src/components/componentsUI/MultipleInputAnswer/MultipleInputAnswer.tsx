@@ -5,15 +5,19 @@ import './MultipleInputAnswer.scss'
 
 interface IMultipleInputAnswer{
     id:string,
+	setData:(value:any) => void
 }
 
-export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id}) => {
+export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id,setData}) => {
 	const [ selectImagesValue,setSelectImages ] = useState<string[]>([])
 	const [ isCorrectAnswer,setCorrectAnswer ] = useState<boolean>(false)
 	const [ answerValue,setAnswerValue ] = useState<string>('')
+	const inputData = {selectImagesValue:selectImagesValue, isCorrectAnswer: isCorrectAnswer,answerValue:answerValue,id: id}
 
 	useEffect(() => {
-	//	change({selectImagesValue:selectImagesValue, isCorrectAnswer: isCorrectAnswer,answerValue:answerValue,id: id})
+		if(answerValue  || selectImagesValue.length){
+			setData(inputData)
+		}
 	}, [ selectImagesValue, isCorrectAnswer, answerValue ])
 
 	return (

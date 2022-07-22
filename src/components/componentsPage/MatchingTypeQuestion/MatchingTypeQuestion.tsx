@@ -7,7 +7,7 @@ import { TeacherComments } from '../../componentsUI/TeacherComments/TeacherComme
 import { MatchingQuestionItem } from './MatchingQuestionItem/MatchingQuestionItem'
 import './MatchingTypeQuestion.scss'
 
-export const MatchingTypeQuestion = () => {
+export const MatchingTypeQuestion:React.FC = () => {
 	const [values1, setValues1] = useState<IMatchingItem>()
 	const [values2, setValues2] = useState<IMatchingItem>()
 	const [values3, setValues3] = useState<IMatchingItem>()
@@ -20,7 +20,6 @@ export const MatchingTypeQuestion = () => {
 		}
 	}, [values1, values2, values3,values4])
 	
-
 
 	return (
 		<div className='matchingTypeQuestion'>

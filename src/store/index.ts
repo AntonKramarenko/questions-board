@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import createQuestion from './createQuestion'
+import questions from './questions'
 
 
 
 export const store = configureStore({
   reducer: {
     createMultipleQuestion: createQuestion,
+    questions: questions
   }
 })
 

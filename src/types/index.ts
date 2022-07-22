@@ -17,3 +17,10 @@ export 	interface IMatchingItem  {
   answerValue:string,
   imagesAnswer:string[]
 }
+
+export interface IMultipleInputItem{
+  selectImagesValue:string[], 
+  isCorrectAnswer: boolean,
+  answerValue:string,
+  id: string
+}

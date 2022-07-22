@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Value } from 'sass'
 import { IMatchingItem } from '../../../../types'
 import { SelectImagesBox } from '../../../componentsUI/SelectImagesBox'
 import { UniversalInput } from '../../../componentsUI/UniversalInput'
@@ -26,7 +25,9 @@ export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change
 	}
 
 	useEffect(() => {
-		change(dataItem)
+		if(imagesQuestion.length || imagesAnswer.length || questionValue||answerValue){
+			change(dataItem)
+		}
 	}, [imagesQuestion, imagesAnswer, questionValue,answerValue])
 
     
