@@ -4,7 +4,10 @@ import { CeateQuestion } from '../../components/componentsPage/CeateQuestion'
 import { PageHeader } from '../../components/componentsPage/PageHeader'
 import './AddQuestionPage.scss'
 
-export const AddQuestionPage = () => {
+interface IAddQuestionPage{
+}
+
+export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
   const navigate = useNavigate()
 
   const clickRejectHandler =()=>{

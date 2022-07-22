@@ -6,6 +6,7 @@ import './CeateQuestion.scss'
 
 export const CeateQuestion = () => {
   const [questonType,setType] = useState<string>('Multiple choice')
+  
 
   return (
     <div className='ceateQuestion'>

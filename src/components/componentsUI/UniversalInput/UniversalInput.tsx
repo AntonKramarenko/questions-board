@@ -24,9 +24,13 @@ const revokeEventFiles =(files:any) =>{
     Array.from(files).map((file:any) => URL.revokeObjectURL(file))
 }
 
+function auto_grow(e:any) {
+  e.target.style.height = '32px';
+  e.target.style.height = `${e.target.scrollHeight}px`; 
+}
   return (
     <div className='universalInput'>
-            <input type="text"  placeholder={placeholder}/>
+            <textarea wrap='soft' placeholder={placeholder} onChange={(e)=> auto_grow(e)}/>
             <input type="file" id={`file-uploader${placeholder}${id}`} multiple onChange={(e)=> readFile(e)}/>
             <label htmlFor={`file-uploader${placeholder}${id}`}>
               <img src={InputLogo} alt="" />

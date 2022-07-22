@@ -1,5 +1,6 @@
 @import '../../../styles/main.scss';
 @import '../../../styles/colors.scss';
+@import '../../../styles/fonts.scss';
 
 .teacherComments{
     background-color: $color-primary-ligth;
@@ -20,5 +21,15 @@
         height: 120px;
         border: none;
         outline: none;
+        color: $color-primary-active;
+        font-weight: 400;
+        font-size: 1rem;
+        text-transform: capitalize;
+    }
+
+    textarea::placeholder{
+        font-weight: 400;
+        font-size: 1.2rem;
+        font-style: $font-style;
     }
 }

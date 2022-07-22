@@ -1,35 +1,47 @@
 @import '../../../styles/colors.scss';
+@import '../../../styles/fonts.scss';
 @import '../../../styles/main.scss';
 
 .inputQuestion{
     display: flex;
     flex-direction: column;
-padding: 16px;
-background-color: $color-primary-ligth;
-border:$border ;
-border-radius: $radius;
+    padding: 16px;
+    background-color: $color-primary-ligth;
+    border:$border ;
+    border-radius: $radius;
 
-&__header{
-    display: flex;
+    &__header{
+        display: flex;
+        align-items: center;
 
-    img{
-        width: 32px;
-        height: 32px;
-    }
+        textarea{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 32px;
+            border: none;
+            outline: none;
+            color: $color-primary-active;
+            font-weight: 400;
+            font-size: 1rem;
+            resize: none;
+            line-height: 27px;
+            text-transform: capitalize;
+        }
+
+        textarea::placeholder{
+            font-weight: 400;
+            font-size: 1.2rem;
+            font-style: $font-style;
+        }
+
+        img{
+            width: 32px;
+            height: 32px;
+        }
     
-    input[type=file]{
-        display: none;
+        input[type=file]{
+            display: none;
+        }
     }
-}
-
-input{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    border: none;
-    outline: none;
-    color: $color-primary;
-    font-weight: 400;
-    font-size: 1rem;
-}
 }
