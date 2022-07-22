@@ -1,17 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './InputQuestion.scss'
 import QuestionLogo from '../../../assets/img/question.png'
 import InputLogo from '../../../assets/icons/mountain.png'
 import { SelectImagesBox } from '../SelectImagesBox'
-import { IQuestionValueTotal } from '../../../types'
+import { useAppDispatch } from '../../../store'
+import { inputQuestion } from '../../../store/createQuestion'
 
-interface IInputQuestion{
-//   setQuestionValueTotal:(value:IQuestionValueTotal) =>void
-}
 
-export const InputQuestion:React.FC<IInputQuestion> = ({}) => {
+export const InputQuestion:React.FC = ({}) => {
 	const [ selectImages, setSelectImages ] = useState<string[]>([])
 	const [ questionValue, setQuestionVaue ] = useState<string>('')
+	const dispatch = useAppDispatch()
+
+
+	useEffect(() => {
+		dispatch(inputQuestion({selectImagesValue:selectImages, questionValue: questionValue}))
+	}, [selectImages, questionValue])
+	
 
 	const readFile:React.ChangeEventHandler<HTMLInputElement>  = (event) => {
 		if(event.target.files) {

@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useAppDispatch } from '../../../store'
+import { point } from '../../../store/createQuestion'
 import { ButtonOutline } from '../ButtonOutline'
 import './AnswerPoints.scss'
 
 export const AnswerPoints = () => {
 	const [ answerPoit,setAnswerPoint ] = useState<number>(1)
+	const dispatch = useAppDispatch()
+
+	useEffect(() => {
+		dispatch(point(answerPoit))
+	}, [answerPoit])
+	
 
 	const setAnswerPointsHandler =()=>{
 		const valueHandler:string | null = prompt('How many points you want to give for a correct answer', '1')

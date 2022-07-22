@@ -1,23 +1,40 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Value } from 'sass'
+import { IMatchingItem } from '../../../../types'
 import { SelectImagesBox } from '../../../componentsUI/SelectImagesBox'
 import { UniversalInput } from '../../../componentsUI/UniversalInput'
 import './MatchingQuestionItem.scss'
 
+
 interface IMatchingQuestionItem{
-    id:string
+    id:string,
+	change:(value:IMatchingItem) => void
 }
 
-export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id}) => {
+export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change}) => {
 	const [ imagesQuestion,setImagesQuestion ] = useState<string[]>([])
 	const [ imagesAnswer,setImagesAnswer ] = useState<string[]>([])
 	const [ questionValue,setQuestionValue ] = useState<string>('')
 	const [ answerValue,setAnswerValue ] = useState<string>('')
+
+	const dataItem = {
+		id:id,  
+		questionValue:questionValue,
+		imagesQuestion:imagesQuestion,
+		answerValue:answerValue,
+		imagesAnswer:imagesAnswer
+	}
+
+	useEffect(() => {
+		change(dataItem)
+	}, [imagesQuestion, imagesAnswer, questionValue,answerValue])
+
     
 	return (
 		<>
 			<div className='matchingQuestionItem question'> 
 				<div className='matchingQuestionItem__header'>
-					<span>1.</span> 
+					<span>{id}.</span> 
 					<UniversalInput 
 						inputValue={questionValue}
 						setInputValue={setQuestionValue}

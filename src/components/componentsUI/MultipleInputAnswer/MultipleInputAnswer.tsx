@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { IMultipleAnswer } from '../../../types'
 import { SelectImagesBox } from '../SelectImagesBox'
 import { UniversalInput } from '../UniversalInput'
 import './MultipleInputAnswer.scss'
 
 interface IMultipleInputAnswer{
     id:string,
-    // answerTotal:(value:IMultipleAnswer)=>void
 }
 
-export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id,}) => {
-	const [ selectImages,setSelectImages ] = useState<string[]>([])
+export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id}) => {
+	const [ selectImagesValue,setSelectImages ] = useState<string[]>([])
 	const [ isCorrectAnswer,setCorrectAnswer ] = useState<boolean>(false)
 	const [ answerValue,setAnswerValue ] = useState<string>('')
+
+	useEffect(() => {
+	//	change({selectImagesValue:selectImagesValue, isCorrectAnswer: isCorrectAnswer,answerValue:answerValue,id: id})
+	}, [ selectImagesValue, isCorrectAnswer, answerValue ])
 
 	return (
 		<div className='multipleInputAnswer'>
@@ -21,13 +23,13 @@ export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id,}) => {
 				<UniversalInput 
 					id={id}
 					placeholder='Answer Text...' 
-					selectImages={selectImages} 
+					selectImages={selectImagesValue} 
 					setSelectImages={setSelectImages}
 					inputValue={answerValue}
 					setInputValue={setAnswerValue}
 				/>
 			</div>
-			{selectImages.length>0  && <SelectImagesBox images={selectImages}/>}
+			{selectImagesValue.length>0  && <SelectImagesBox images={selectImagesValue}/>}
 			{isCorrectAnswer ? <div className='multipleInputAnswer__correct'> <span>&#10003;</span>Correct Answer</div> : null }
 		</div>    
 	)
