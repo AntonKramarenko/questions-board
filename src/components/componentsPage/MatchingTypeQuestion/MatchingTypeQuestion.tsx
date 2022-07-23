@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch } from '../../../store'
-import { answers, inputQuestion } from '../../../store/createQuestion'
+import { answers, changeType, clearCreateQuestion, inputQuestion } from '../../../store/createQuestion'
 import { IMatchingItem, IMatchingItemAnswer, IMatchingItemQuestion } from '../../../types'
 import { AnswerPoints } from '../../componentsUI/AnswerPoints'
 import { TeacherComments } from '../../componentsUI/TeacherComments/TeacherComments'
@@ -8,9 +8,18 @@ import { MatchingQuestionItem } from './MatchingQuestionItem/MatchingQuestionIte
 import './MatchingTypeQuestion.scss'
 
 export const MatchingTypeQuestion:React.FC = () => {
-	const [questionValues, setQuestionValues] = useState<IMatchingItem[]>()
+	const [ questionValues, setQuestionValues ] = useState<IMatchingItem[]>()
 	const dispatch = useAppDispatch()
 
+	useEffect(() => {
+		if(questionValues){
+			dispatch(inputQuestion(getQuestion(questionValues)))
+			dispatch(answers(getAnswers(questionValues)))
+		}
+		return () => {
+			dispatch(changeType())
+	    }
+	}, [ questionValues ])
 	
 
 
@@ -26,12 +35,6 @@ export const MatchingTypeQuestion:React.FC = () => {
 		})
 	}
 	
-	useEffect(() => {
-		if(questionValues){
-			dispatch(inputQuestion(getQuestion(questionValues)));
-			dispatch(answers(getAnswers(questionValues)))
-		}
-	}, [questionValues])
 
 	const clickItemHandler =(inputValue:IMatchingItem)=>{
 		if(questionValues){
@@ -39,7 +42,7 @@ export const MatchingTypeQuestion:React.FC = () => {
 			const filteredData = arr.filter((value, index, self) => self.findIndex(v => v.id === value.id ) === index)
 			setQuestionValues(filteredData)
 		}else{
-			setQuestionValues([inputValue])
+			setQuestionValues([ inputValue ])
 		}
 	}
 	

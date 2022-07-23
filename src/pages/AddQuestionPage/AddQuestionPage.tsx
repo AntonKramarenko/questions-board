@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { CeateQuestion } from '../../components/componentsPage/CeateQuestion'
 import { PageHeader } from '../../components/componentsPage/PageHeader'
 import { useAppDispatch, useAppSelector } from '../../store'
-import { clearCreateQuestion } from '../../store/createQuestion'
+import {  clearCreateQuestion } from '../../store/createQuestion'
 import { addQuestion } from '../../store/questions'
 import './AddQuestionPage.scss'
 
@@ -27,7 +27,8 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 	}
 
 	const clickApproveHandler =()=>{
-		dispatch(addQuestion(questionValues))
+		const currentQuestion = {...questionValues, id: Date.now()}
+		dispatch(addQuestion(currentQuestion))
 		navigate('/exams/New-Exam-Title-Here')
 	}
 

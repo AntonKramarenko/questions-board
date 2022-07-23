@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import './QuestionTypeSelect.scss'
 import { IoCaretDownOutline,IoCaretUpOutline } from 'react-icons/io5'
 import ThinkLogo from '../../../assets/img/think.png'
+import { useEffect } from 'react'
+import { useAppDispatch } from '../../../store'
+import { questionType } from '../../../store/createQuestion'
 
 
 interface IQuestionTypeSelect{
@@ -11,8 +14,7 @@ interface IQuestionTypeSelect{
 
 export const QuestionTypeSelect: React.FC<IQuestionTypeSelect> = ({questonType,setType}) => {
 	const [ isVisible,setVisible ] = useState(false)
-
-
+	
 	const clickValueHandler =(valueType:string) =>{
 		setType(valueType)
 		setVisible(false)

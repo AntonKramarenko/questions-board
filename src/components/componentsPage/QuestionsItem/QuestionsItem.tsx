@@ -2,15 +2,24 @@ import React from 'react'
 import './QuestionsItem.scss'
 import { TrashIcon } from '../../componentsUI/TrashIcon'
 import { EditIcon } from '../../componentsUI/EditIcon'
-import { QuestionItemMatching } from '../../componentsUI/QuestionItemMatching'
+import { IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer, IMultipleInputQuestion } from '../../../types'
+import { QuestionValue } from '../QuestionValue'
 
-export const QuestionsItem = () => {
+interface IQuestionsItem{
+    indexValue:number,
+    questonType:string,
+	inputQuestion:IMultipleInputQuestion| IMatchingItemQuestion[] ,
+	answer:IMultipleInputAnswer[] | IMatchingItemAnswer[]
+}
+
+export const QuestionsItem:React.FC<IQuestionsItem> = ({indexValue,questonType, inputQuestion,answer}) => {
+	
 	return (
 		<div className='questionsItem'>
-			<div className='questionsItem__counter'>1</div>
+			<div className='questionsItem__counter'>{indexValue}</div>
 			<div className='questionsItem__question'>
-                <QuestionItemMatching/>
-            </div>
+				<QuestionValue questonType={questonType} inputQuestion={inputQuestion} answer={answer}/>
+			</div>
 			<div className='questionsItem__standart'>7A</div>
 			<div className='questionsItem__actions'>
 				<TrashIcon/>

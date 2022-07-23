@@ -1,17 +1,17 @@
 import React from 'react'
 import './ShowAnswer.scss'
 import { SelectImagesBox } from '../SelectImagesBox'
+import { IMatchingItemAnswer } from '../../../types'
 
-export const ShowAnswer = () => {
+export const ShowAnswer = (props:IMatchingItemAnswer) => {
+	const {id, answerValue, imagesAnswer} = props
 	return (
 		<div className='showAnswer'>
 			<div className='showAnswer__value'>
-				<span className='showAnswer__count'>1.</span>  
-				<div className='showAnswer__answer'>Long long text here non deserunt ullamco est sit aliqua dolor do amet sint. 
-                    Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet
-				</div>
+				{id.length && <span className='showAnswer__count'>{id}.</span>  }
+				<div className='showAnswer__answer'>{answerValue}</div>
 			</div>
-			<SelectImagesBox images={[ '' ]}/>
+			<SelectImagesBox images={imagesAnswer}/>
 		</div>
 	)
 }

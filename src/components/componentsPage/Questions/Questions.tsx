@@ -7,14 +7,20 @@ interface IQuestion {
     questions: IQuestionState[]
 }
 
-export const Questions:React.FC<IQuestion> = (questions) => {
+export const Questions:React.FC<IQuestion> = ({questions}) => {
 	return (
 		<section className='questions'>
 			<div className='questions__header'>
 				<span>#</span><span>Question</span><span>Standart</span><span>Actions</span>
 			</div>
 			<div className='questions__body'>
-				<QuestionsItem/>
+				{questions.map((item:IQuestionState ,index: number) => <QuestionsItem 
+					key={`${ item.id }`} 
+					indexValue={index+1}  
+					questonType={item.questonType} 
+					inputQuestion={item.inputQuestion}  
+					answer={item.answer}
+				/>  )}
 			</div>
 		</section>      
 	)

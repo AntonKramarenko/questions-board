@@ -1,21 +1,13 @@
 export interface IMultipleInputQuestion{
-  selectImagesValue:string[],
+  imagesQuestion:string[],
   questionValue:string
 }
 
 export interface IMultipleInputAnswer{
-  selectImagesValue:string[],
+  imagesAnswer:string[],
   isCorrectAnswer:boolean,
   answerValue: string,
   id:string
-}
-
-export interface IMatchingItem  {
-  id:string,  
-  questionValue:string,
-  imagesQuestion:string[],
-  answerValue:string,
-  imagesAnswer:string[]
 }
 
 export interface IMatchingItemQuestion  {
@@ -29,14 +21,23 @@ export interface IMatchingItemAnswer  {
   imagesAnswer:string[]
 }
 
+export interface IMatchingItem  {
+  id:string,  
+  questionValue:string,
+  imagesQuestion:string[],
+  answerValue:string,
+  imagesAnswer:string[]
+}
+
 export interface IMultipleInputItem{
-  selectImagesValue:string[], 
+  imagesAnswer:string[], 
   isCorrectAnswer: boolean,
   answerValue:string,
   id: string
 }
 
 export interface IQuestionState {
+  id:number
   questonType: string,
 	inputQuestion: IMultipleInputQuestion | IMatchingItemQuestion[],
 	answer:IMultipleInputAnswer[] | IMatchingItemAnswer[]

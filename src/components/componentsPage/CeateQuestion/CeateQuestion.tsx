@@ -14,7 +14,6 @@ export const CeateQuestion:React.FC = () => {
 
 	useEffect(()=>{
 		dispatch(questionType(questonType))
-		dispatch(clearCreateQuestion())
 	},[ questonType ])
 
 

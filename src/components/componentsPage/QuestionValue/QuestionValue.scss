@@ -1,8 +1,7 @@
 @import '../../../styles/colors.scss';
 @import '../../../styles/main.scss';
 
-.questionItemMatching{
-    border: 1px solid black;
+.questionValue{
 
     &__type{
         display: inline-block;
@@ -17,8 +16,11 @@
         margin-bottom: 10px;
     }
 
-    &__answers{
+    &__question{
+        margin-bottom: 8px;
+    }
 
+    &__answers{
         &-title{
             padding: 8px 0;
             color: $color-primary-active;

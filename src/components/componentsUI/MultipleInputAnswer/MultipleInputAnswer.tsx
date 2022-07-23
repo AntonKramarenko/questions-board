@@ -12,7 +12,7 @@ export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id,setData})
 	const [ selectImagesValue,setSelectImages ] = useState<string[]>([])
 	const [ isCorrectAnswer,setCorrectAnswer ] = useState<boolean>(false)
 	const [ answerValue,setAnswerValue ] = useState<string>('')
-	const inputData = {selectImagesValue:selectImagesValue, isCorrectAnswer: isCorrectAnswer,answerValue:answerValue,id: id}
+	const inputData = {imagesAnswer:selectImagesValue, isCorrectAnswer: isCorrectAnswer,answerValue:answerValue,id: id}
 
 	useEffect(() => {
 		if(answerValue  || selectImagesValue.length){

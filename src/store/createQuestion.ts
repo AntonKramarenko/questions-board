@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IMultipleInputQuestion, IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer } from '../types'
 
 interface CreateQuestioState {
+	id:number
 	questonType: string,
 	inputQuestion: IMultipleInputQuestion | IMatchingItemQuestion[],
 	answer:IMultipleInputAnswer[] | IMatchingItemAnswer[]
@@ -10,9 +11,10 @@ interface CreateQuestioState {
 }
 
 const initialState: CreateQuestioState = {
+	id:0,
 	questonType: '',
 	inputQuestion:{
-		selectImagesValue:[],
+		imagesQuestion:[],
 		questionValue:''
 	},
 	answer:[],
@@ -41,9 +43,16 @@ export const createQuestion = createSlice({
 		},
 		clearCreateQuestion(state:CreateQuestioState){
 			return initialState
+		},
+		changeType(state:CreateQuestioState){
+			state.inputQuestion = {
+				imagesQuestion:[],
+				questionValue:''
+			}
+			state.answer = []
 		}
 	}
 })
 
-export const { questionType,inputQuestion,point,teacherComment,answers,clearCreateQuestion} = createQuestion.actions
+export const {  questionType,inputQuestion,point,teacherComment,answers,clearCreateQuestion,changeType} = createQuestion.actions
 export default createQuestion.reducer

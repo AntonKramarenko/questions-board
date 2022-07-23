@@ -14,7 +14,7 @@ export const InputQuestion:React.FC = ({}) => {
 
 
 	useEffect(() => {
-		dispatch(inputQuestion({selectImagesValue:selectImages, questionValue: questionValue}))
+		dispatch(inputQuestion({imagesQuestion:selectImages, questionValue: questionValue}))
 	}, [selectImages, questionValue])
 	
 
