@@ -1,0 +1,35 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/main.scss';
+
+.questionItemMatching{
+    border: 1px solid black;
+
+    &__type{
+        display: inline-block;
+        margin: 0;
+        padding: 2px 4px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: $color-primary-ligth;
+        text-transform: uppercase;
+        background-color: $color-background-type-dark;
+        border-radius: $radius;
+        margin-bottom: 10px;
+    }
+
+    &__answers{
+
+        &-title{
+            padding: 8px 0;
+            color: $color-primary-active;
+            border-top: 1px solid #D0E8EF;
+        }
+    }
+    &__showAnswer{
+        color: $color-primary-active;
+        font-size: 0.7rem;
+        margin: 12px 0;
+        cursor: pointer;
+
+    }
+}

@@ -1,21 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IMultipleInputQuestion, IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer } from '../types'
+import {  IQuestionState } from '../types'
 
-interface CreateQuestioState {
-	questonType: string,
-	inputQuestion: IMultipleInputQuestion | IMatchingItemQuestion[],
-	answer:IMultipleInputAnswer[] | IMatchingItemAnswer[]
-	points:number,
-	teacherComment:string
-}
 
-const initialState: CreateQuestioState[] = []
+const initialState: IQuestionState[] = []
 
 export const question = createSlice({
 	name: 'counter',
 	initialState,
 	reducers: {
-		addQuestion(state:CreateQuestioState[],action:PayloadAction<CreateQuestioState>){
+		addQuestion(state:IQuestionState[],action:PayloadAction<IQuestionState>){
 			state.push(action.payload)
 		}
 	}

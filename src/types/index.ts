@@ -35,3 +35,11 @@ export interface IMultipleInputItem{
   answerValue:string,
   id: string
 }
+
+export interface IQuestionState {
+  questonType: string,
+	inputQuestion: IMultipleInputQuestion | IMatchingItemQuestion[],
+	answer:IMultipleInputAnswer[] | IMatchingItemAnswer[]
+	points:number,
+	teacherComment:string
+}

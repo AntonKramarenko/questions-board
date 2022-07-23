@@ -1,0 +1,23 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/main.scss';
+
+.questionsItem{
+    border: 1px solid black;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 72px 1fr 160px 60px;
+    padding: 8px 24px;
+    background-color: $color-primary-ligth;
+    margin: 16px 0;
+    color: $color-primary-dark;
+    font-size: 0.9rem;
+
+    &__counter{
+        font-weight: 700;
+    }
+
+    &__actions{
+        display: flex;
+        justify-content: space-between;
+    }
+}

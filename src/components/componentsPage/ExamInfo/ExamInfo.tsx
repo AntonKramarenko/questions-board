@@ -14,12 +14,12 @@ import HatLogo from '../../../assets/img/hat.png'
 
 
 export const ExamInfo = () => {
-  return (
-    <div className='examInfo'>
-         <ExamInfoSmall infoImg={HatLogo}  title='Grade' value='Grade 1' />
-         <ExamInfoSmall infoImg={BooksLogo}  title='Subject Area' value='Science' />
-        <ExamInfoLarge  infoImgTop={TargetLogo} infoImgBottom={ClockLogo}/>
-        <QuestionsBox/>
-    </div>
-  )
+	return (
+		<div className='examInfo'>
+			<ExamInfoSmall infoImg={HatLogo}  title='Grade' value='Grade 1' />
+			<ExamInfoSmall infoImg={BooksLogo}  title='Subject Area' value='Science' />
+			<ExamInfoLarge  infoImgTop={TargetLogo} infoImgBottom={ClockLogo}/>
+			<QuestionsBox/>
+		</div>
+	)
 }

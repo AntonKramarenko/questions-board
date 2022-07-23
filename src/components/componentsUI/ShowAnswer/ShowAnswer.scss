@@ -1,0 +1,13 @@
+@import '../../../styles/colors.scss';
+.showAnswer{
+    color: $color-primary;
+    margin-bottom: 30px;
+
+    &__value{
+        display: flex;
+    }
+
+    &__count{
+        margin-right: 10px;
+    }
+}
