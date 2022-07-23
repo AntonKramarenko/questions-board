@@ -11,9 +11,16 @@
         font-weight: 500;
         color: $color-primary-ligth;
         text-transform: uppercase;
-        background-color: $color-background-type-dark;
+        background-color:$color-background-type-light;
         border-radius: $radius;
         margin-bottom: 10px;
+    }
+
+    .multiple{
+        background-color:$color-background-type-light;
+    }
+    .matching{
+        background-color: $color-background-type-dark;
     }
 
     &__question{

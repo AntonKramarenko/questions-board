@@ -1,6 +1,5 @@
 .questions{
     &__header{
-        border: 1px solid black;
         display: grid;
         justify-items: start;
         align-items: center;
@@ -10,11 +9,4 @@
         padding: 8px 24px;
         margin-bottom: 16px;
     }
-
-    // &__body{
-    //     border: 1px solid black;
-    //     height: 100px;
-    //     display: grid;
-    //     grid-template-columns: 72px 1fr 160px 60px;
-    // }
 }
