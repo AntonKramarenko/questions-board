@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Type } from 'typescript'
 import { useAppDispatch } from '../../../store'
-import { values } from '../../../store/createQuestion'
+import { answers } from '../../../store/createQuestion'
 import { IMultipleInputItem } from '../../../types'
 import { AnswerPoints } from '../../componentsUI/AnswerPoints'
 import { ButtonOutline } from '../../componentsUI/ButtonOutline'
@@ -21,7 +21,7 @@ export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = ({}) => {
 
 	useEffect(() => {
 		if(data.length){
-			dispatch(values(data))
+			dispatch(answers(data))
 		}
 	}, [data])
 	

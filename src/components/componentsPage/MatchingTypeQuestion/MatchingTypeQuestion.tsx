@@ -1,36 +1,58 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch } from '../../../store'
-import { values } from '../../../store/createQuestion'
-import { IMatchingItem } from '../../../types'
+import { answers, inputQuestion } from '../../../store/createQuestion'
+import { IMatchingItem, IMatchingItemAnswer, IMatchingItemQuestion } from '../../../types'
 import { AnswerPoints } from '../../componentsUI/AnswerPoints'
 import { TeacherComments } from '../../componentsUI/TeacherComments/TeacherComments'
 import { MatchingQuestionItem } from './MatchingQuestionItem/MatchingQuestionItem'
 import './MatchingTypeQuestion.scss'
 
 export const MatchingTypeQuestion:React.FC = () => {
-	const [values1, setValues1] = useState<IMatchingItem>()
-	const [values2, setValues2] = useState<IMatchingItem>()
-	const [values3, setValues3] = useState<IMatchingItem>()
-	const [values4, setValues4] = useState<IMatchingItem>()
+	const [questionValues, setQuestionValues] = useState<IMatchingItem[]>()
 	const dispatch = useAppDispatch()
-	
-	useEffect(() => {
-		if(values1 && values2 &&  values3 && values4){
-			dispatch(values([values1, values2, values3,values4]))
-		}
-	}, [values1, values2, values3,values4])
+
 	
 
+
+	const getQuestion =(arr:IMatchingItem[]) =>{
+		return arr.map((item:IMatchingItemQuestion )=>{
+			return {id:item.id,questionValue: item.questionValue, imagesQuestion: item.imagesQuestion }
+		})
+	}
+
+	const getAnswers =(arr:IMatchingItem[]) =>{
+		return arr.map((item:IMatchingItemAnswer )=>{
+			return {id:item.id, answerValue: item.answerValue, imagesAnswer: item.imagesAnswer }
+		})
+	}
+	
+	useEffect(() => {
+		if(questionValues){
+			dispatch(inputQuestion(getQuestion(questionValues)));
+			dispatch(answers(getAnswers(questionValues)))
+		}
+	}, [questionValues])
+
+	const clickItemHandler =(inputValue:IMatchingItem)=>{
+		if(questionValues){
+			const arr = [ ...questionValues, inputValue ].reverse()
+			const filteredData = arr.filter((value, index, self) => self.findIndex(v => v.id === value.id ) === index)
+			setQuestionValues(filteredData)
+		}else{
+			setQuestionValues([inputValue])
+		}
+	}
+	
 	return (
 		<div className='matchingTypeQuestion'>
 			<div className='matchingTypeQuestion__title'>2. Questions / Answers</div>
 			<div className='matchingTypeQuestion__questions-body'>
 				<div className='matchingTypeQuestion__body-title question'>Question</div>
 				<div className='matchingTypeQuestion__body-title answer'>Correct Answer</div>
-				<MatchingQuestionItem id='1' change={setValues1}/>
-				<MatchingQuestionItem id='2' change={setValues2}/>
-				<MatchingQuestionItem id='3' change={setValues3}/>
-				<MatchingQuestionItem id='4' change={setValues4}/>
+				<MatchingQuestionItem id='1' change={clickItemHandler}/>
+				<MatchingQuestionItem id='2' change={clickItemHandler}/>
+				<MatchingQuestionItem id='3' change={clickItemHandler}/>
+				<MatchingQuestionItem id='4' change={clickItemHandler}/>
 			</div>
 			<div className='matchingTypeQuestion__title'>3. Points</div>
 			<AnswerPoints/>

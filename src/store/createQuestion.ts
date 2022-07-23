@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IInputQuestion, IMatchingItem, IMultipleInputAnswer } from '../types'
+import { IMultipleInputQuestion, IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer } from '../types'
 
 interface CreateQuestioState {
 	questonType: string,
-	inputQuestion?: IInputQuestion,
-	values:IMultipleInputAnswer[] | IMatchingItem[]
+	inputQuestion: IMultipleInputQuestion | IMatchingItemQuestion[],
+	answer:IMultipleInputAnswer[] | IMatchingItemAnswer[]
 	points:number,
 	teacherComment:string
 }
@@ -15,7 +15,7 @@ const initialState: CreateQuestioState = {
 		selectImagesValue:[],
 		questionValue:''
 	},
-	values:[],
+	answer:[],
 	points: 1,
 	teacherComment: ''
 }
@@ -27,11 +27,11 @@ export const createQuestion = createSlice({
 		questionType(state:CreateQuestioState, action:PayloadAction<string>){
 			state.questonType = action.payload
 		},
-		inputQuestion(state:CreateQuestioState,action:PayloadAction<IInputQuestion>){
+		inputQuestion(state:CreateQuestioState,action:PayloadAction<IMultipleInputQuestion| IMatchingItemQuestion[]>){
 			state.inputQuestion = action.payload
 		},
-		values(state:CreateQuestioState, action:PayloadAction<IMultipleInputAnswer[] | IMatchingItem[]>){
-			state.values = action.payload
+		answers(state:CreateQuestioState, action:PayloadAction<IMultipleInputAnswer[] | IMatchingItemAnswer[]>){
+			state.answer = action.payload
 		},
 		point(state:CreateQuestioState, action:PayloadAction<number>){
 			state.points = action.payload
@@ -45,5 +45,5 @@ export const createQuestion = createSlice({
 	}
 })
 
-export const { questionType,inputQuestion,point,teacherComment,values,clearCreateQuestion} = createQuestion.actions
+export const { questionType,inputQuestion,point,teacherComment,answers,clearCreateQuestion} = createQuestion.actions
 export default createQuestion.reducer

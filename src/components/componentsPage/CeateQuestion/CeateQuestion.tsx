@@ -12,11 +12,9 @@ export const CeateQuestion:React.FC = () => {
 	const [ questonType,setType ] = useState<string>('Multiple choice')
 	const dispatch = useAppDispatch()
 
-  
-
 	useEffect(()=>{
 		dispatch(questionType(questonType))
-    dispatch(clearCreateQuestion())
+		dispatch(clearCreateQuestion())
 	},[ questonType ])
 
 

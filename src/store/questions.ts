@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IInputQuestion, IMatchingItem, IMultipleInputAnswer } from '../types'
+import { IMultipleInputQuestion, IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer } from '../types'
 
 interface CreateQuestioState {
 	questonType: string,
-	inputQuestion?: IInputQuestion,
-	values:IMultipleInputAnswer[] | IMatchingItem[]
+	inputQuestion: IMultipleInputQuestion | IMatchingItemQuestion[],
+	answer:IMultipleInputAnswer[] | IMatchingItemAnswer[]
 	points:number,
 	teacherComment:string
 }

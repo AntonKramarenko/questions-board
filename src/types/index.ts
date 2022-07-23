@@ -1,4 +1,4 @@
-export interface IInputQuestion{
+export interface IMultipleInputQuestion{
   selectImagesValue:string[],
   questionValue:string
 }
@@ -10,10 +10,21 @@ export interface IMultipleInputAnswer{
   id:string
 }
 
-export 	interface IMatchingItem  {
+export interface IMatchingItem  {
   id:string,  
   questionValue:string,
   imagesQuestion:string[],
+  answerValue:string,
+  imagesAnswer:string[]
+}
+
+export interface IMatchingItemQuestion  {
+  id:string,  
+  questionValue:string,
+  imagesQuestion:string[]
+}
+export interface IMatchingItemAnswer  {
+  id:string,  
   answerValue:string,
   imagesAnswer:string[]
 }
