@@ -34,21 +34,12 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 			) setCanSave(true)
 			else setCanSave(false)
 	  } else {
-
 			if(questionValues.answer.length >= 2 && questionValues.inputQuestion.questionValue.length || questionValues.inputQuestion.imagesQuestion.length  ){
 				let noEmptyAnswers = questionValues.answer.filter(item => item.answerValue.length || item.imagesAnswer.length)
 
 				if(noEmptyAnswers.length === questionValues.answer.length) setCanSave(true)
 				else setCanSave(false)
 			}
-			
-
-
-			// if(questionValues.answer.length >= 2 
-			// 	&& questionValues.inputQuestion.questionValue.length 
-			// 	|| questionValues.inputQuestion.imagesQuestion.length
-			// ) setCanSave(true)
-			// else setCanSave(false)
 	  }
 	}, [ questionValues ])
 	
@@ -64,10 +55,6 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 			navigate('/exams/New-Exam-Title-Here')
 		}
 	}
-
-
-	console.log(isCanSave)
-	
 
 	return (
 		<div className='addQuestionPage'>

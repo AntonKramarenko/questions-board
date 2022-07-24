@@ -10,6 +10,8 @@ import { inputQuestion } from '../../../store/createQuestion'
 export const InputQuestion:React.FC = ({}) => {
 	const [ selectImages, setSelectImages ] = useState<string[]>([])
 	const [ questionValue, setQuestionVaue ] = useState<string>('')
+	const [isInputClick, setInputClick] = useState(false)
+	const [isEmpty, setIsEmpty] = useState(true)
 	const dispatch = useAppDispatch()
 	const inputRef = useRef<HTMLTextAreaElement>(null)
 
@@ -22,6 +24,9 @@ export const InputQuestion:React.FC = ({}) => {
 	}, [])
 
 	useEffect(() => {
+		if(questionValue.length || selectImages.length) setIsEmpty(false)
+		else setIsEmpty(true)
+
 		dispatch(inputQuestion({imagesQuestion:selectImages, questionValue: questionValue}))
 	}, [ selectImages, questionValue ])
 	
@@ -38,6 +43,7 @@ export const InputQuestion:React.FC = ({}) => {
 	}
 
 	const writeTextHandler:React.ChangeEventHandler<HTMLTextAreaElement> = (e) =>{
+		setInputClick(true)
 		setQuestionVaue(e.target.value)
 		inputHeight(e)
 	}
@@ -48,7 +54,7 @@ export const InputQuestion:React.FC = ({}) => {
 	}
 
 	return (
-		<div className='inputQuestion'>
+		<div className={isInputClick && isEmpty  ? 'inputQuestion isEmpty': 'inputQuestion'} >
 			<div className='inputQuestion__header'>
 				<img src={QuestionLogo} alt='question' />
 				<textarea 

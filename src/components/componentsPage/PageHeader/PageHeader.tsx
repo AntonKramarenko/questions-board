@@ -1,6 +1,5 @@
 import React  from 'react'
 import { useLocation } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
 import './PageHeader.scss'
 import ExamsIMG from '../../../assets/icons/Frame.svg'
 import RejectImg from '../../../assets/icons/reject.png'
@@ -17,7 +16,6 @@ interface IPageHeader{
 }
 
 export const PageHeader: React.FC<IPageHeader> = ({title, clickReject, clickApprove,titleReject,titleApprove,isCanSave}) => {
-
 	const currentLoacation= useLocation()
 
 	// must refactoring
@@ -32,6 +30,7 @@ export const PageHeader: React.FC<IPageHeader> = ({title, clickReject, clickAppr
 			}
 		})
 	}
+
 	return (
 		<section className='pageHeader'>
 			<div className='pageHeader__info'>
@@ -39,16 +38,18 @@ export const PageHeader: React.FC<IPageHeader> = ({title, clickReject, clickAppr
        
 				<h1 className='pageHeader__info-title'>{title}</h1>
 			</div>
-			{/* buttom -> componentsUI */}
 			<div className='pageHeader__actions'>
 				<button className='pageHeader__actions-btn clickReject' onClick={clickReject}>
 					<img src={RejectImg} alt='' />
 					{titleReject}</button>
 				<button className={isCanSave ? 'pageHeader__actions-btn active': 'pageHeader__actions-btn noActive'} onClick={clickApprove}>
-					{isCanSave?  <img src={ApproveImg} alt='' /> : <img src={RejectImg} alt='' />}
+					<img 
+						src={ApproveImg} 
+						alt='ApproveImg' 
+						className={isCanSave ? 'pageHeader__actions-img isCanSave' : 'pageHeader__actions-img' }
+					/>
 					{titleApprove}</button>
 			</div>
-
 		</section>
 	)
 }

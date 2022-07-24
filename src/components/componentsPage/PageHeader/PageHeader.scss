@@ -53,6 +53,7 @@
             color: $color-primary;
             font-weight: 500;
             position: relative;
+            cursor: pointer;
 
             img {
                 margin-right: 14px;
@@ -61,27 +62,23 @@
             }
         }
 
+        &-img{
+            display: none;
+        }
+
         .active{
             background-color: $color-primary-active;
             color: $color-primary-ligth;
         }
 
         .noActive{
-            background-color: $color-routes;
-            color: $color-primary-ligth;
+            border: $border;
+            color: $color-primary-active;
+            cursor: no-drop;
         }
 
-        .noActive:hover::after{
-            content: 'No data to save';
-            position: absolute;
-            top: 0;
-            color: $color-primary-active;
-            width: 100%;
-            padding: 8px 0;
-            border: $border;
-            border-radius: $radius;
-            background-color: $color-background-light;
-            
+        .isCanSave{
+            display: block;
         }
     }
 }

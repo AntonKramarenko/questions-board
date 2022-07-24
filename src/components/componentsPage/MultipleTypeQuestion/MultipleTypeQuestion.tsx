@@ -20,22 +20,18 @@ export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = ({}) => {
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-	
-	
 	  return () => {
-		dispatch(changeType())
-	}
+			dispatch(changeType())
+		}
 	}, [])
 	
-
 	useEffect(() => {
 		if(data.length){
 			dispatch(answers(data))
 		}
-	}, [data])
-	
+	}, [ data ])
 
-	const add = (InputValue:any)=>{
+	const addData = (InputValue:any)=>{
 		if(data){
 			const arr = [ ...data, InputValue ].reverse()
 			const filteredData = arr.filter((value, index, self) => self.findIndex(v => v.id === value.id ) === index)
@@ -43,10 +39,7 @@ export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = ({}) => {
 		}else{
 			setData([ InputValue ])
 		}
-		
 	}
-
-
   
 	const addInputAnswerHandler =() => {
 		const newAnswerId = `${ answersCount.length+1 }`
@@ -59,7 +52,7 @@ export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = ({}) => {
 			<InputQuestion />
 			<div className='multipleTypeQuestion__title'>3. Answers <span>(please tick the correct answers)</span></div>
 			{
-				answersCount.map(ans =>  <MultipleInputAnswer key={ans} id={ans} setData={add}/>)
+				answersCount.map(ans =>  <MultipleInputAnswer key={ans} id={ans} setData={addData}/>)
 			}
 			<ButtonOutline btnName='Add Answer' click={()=>addInputAnswerHandler()}/>
 			<div className='multipleTypeQuestion__title'>4. Points</div>

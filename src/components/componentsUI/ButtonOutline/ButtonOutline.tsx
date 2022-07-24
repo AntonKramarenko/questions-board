@@ -6,12 +6,12 @@ interface IButtonOutline{
 }
 
 export const ButtonOutline: React.FC<IButtonOutline> = ({btnName,click}) => {
-  return (
-    <button 
-      className='buttonOutline' 
-      onClick={click}
-    >
-      {btnName}
-    </button>
-  )
+	return (
+		<button 
+			className='buttonOutline' 
+			onClick={click}
+		>
+			{btnName}
+		</button>
+	)
 }

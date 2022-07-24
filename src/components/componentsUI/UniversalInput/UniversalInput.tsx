@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './UniversalInput.scss'
 import InputLogo from '../../../assets/icons/mountain.png'
 
@@ -8,11 +8,12 @@ interface IUniversalInput{
   selectImages:string[],
   inputValue:string,
   setSelectImages:([]) => void,
-  setInputValue:(value:string) => void
+  setInputValue:(value:string) => void,
+  inputClick?: (value:boolean) => void
 }
 
 export const UniversalInput:React.FC<IUniversalInput> = (props) => {
-	const {placeholder, selectImages,setSelectImages,id,inputValue,setInputValue} = props
+	const {placeholder, selectImages,setSelectImages,id,inputValue,setInputValue,inputClick} = props
 
 	useEffect(() => {
    
@@ -20,7 +21,6 @@ export const UniversalInput:React.FC<IUniversalInput> = (props) => {
 			revokeEventFiles(selectImages)
 		}
 	}, [])
-  
 
 	const readFile = (event:any) => {
 		if(event.target.files) {
@@ -34,10 +34,12 @@ export const UniversalInput:React.FC<IUniversalInput> = (props) => {
 	}
 
 	const writeTextHandler:React.ChangeEventHandler<HTMLTextAreaElement>  =(e)=> {
+		if(inputClick)inputClick(true)
 		setInputValue(e.target.value)
 		e.target.style.height = '32px'
 		e.target.style.height = `${ e.target.scrollHeight }px` 
 	}
+	
 
 	return (
 		<div className='universalInput'>
