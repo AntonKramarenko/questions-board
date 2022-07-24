@@ -12,9 +12,7 @@ export const question = createSlice({
 			state.push(action.payload)
 		},
 		removeQuestion(state:IQuestionState[],action:PayloadAction<number>){
-		
 			return state.filter(question => question.id !== action.payload)
-			
 		}
 	}
 })

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './InputQuestion.scss'
 import QuestionLogo from '../../../assets/img/question.png'
 import InputLogo from '../../../assets/icons/mountain.png'
@@ -11,11 +11,19 @@ export const InputQuestion:React.FC = ({}) => {
 	const [ selectImages, setSelectImages ] = useState<string[]>([])
 	const [ questionValue, setQuestionVaue ] = useState<string>('')
 	const dispatch = useAppDispatch()
+	const inputRef = useRef<HTMLTextAreaElement>(null)
 
+	useEffect(() => {
+		inputRef.current?.focus()
+
+	  return () => {
+			revokeEventFiles(selectImages)
+	  }
+	}, [])
 
 	useEffect(() => {
 		dispatch(inputQuestion({imagesQuestion:selectImages, questionValue: questionValue}))
-	}, [selectImages, questionValue])
+	}, [ selectImages, questionValue ])
 	
 
 	const readFile:React.ChangeEventHandler<HTMLInputElement>  = (event) => {
@@ -44,6 +52,7 @@ export const InputQuestion:React.FC = ({}) => {
 			<div className='inputQuestion__header'>
 				<img src={QuestionLogo} alt='question' />
 				<textarea 
+					ref={inputRef}
 					placeholder='Question Text...' 
 					required 
 					wrap='soft' 
