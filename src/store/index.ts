@@ -1,15 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import createQuestion from './createQuestion'
+import examInfo from './examInfo'
 import questions from './questions'
 
 
 
 export const store = configureStore({
-  reducer: {
-    createQuestion: createQuestion,
-    questions: questions
-  }
+	reducer: {
+		createQuestion: createQuestion,
+		questions: questions,
+		examInfo: examInfo
+	}
 })
 
 export type RootState = ReturnType<typeof store.getState>

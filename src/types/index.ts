@@ -44,3 +44,11 @@ export interface IQuestionState {
 	points:number,
 	teacherComment:string
 }
+
+export interface IExamInfo{
+  course:string,
+  grade:string,
+  schools:string[],
+  subject:string,
+  time:string
+}

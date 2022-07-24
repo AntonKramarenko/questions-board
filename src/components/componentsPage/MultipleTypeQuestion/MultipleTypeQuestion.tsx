@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Type } from 'typescript'
 import { useAppDispatch } from '../../../store'
-import { answers, changeType, clearCreateQuestion } from '../../../store/createQuestion'
+import { answers, changeType } from '../../../store/createQuestion'
 import { IMultipleInputItem } from '../../../types'
 import { AnswerPoints } from '../../componentsUI/AnswerPoints'
 import { ButtonOutline } from '../../componentsUI/ButtonOutline'
@@ -14,7 +13,7 @@ interface IMultipleTypeQuestion{
 }
 
 
-export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = ({}) => {
+export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = () => {
 	const [ answersCount,setAnswersCount ] = useState<string[]>([ '1','2' ])
 	const [ data, setData ] = useState<IMultipleInputItem[]>([])
 	const dispatch = useAppDispatch()
@@ -36,9 +35,7 @@ export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = ({}) => {
 			const arr = [ ...data, InputValue ].reverse()
 			const filteredData = arr.filter((value, index, self) => self.findIndex(v => v.id === value.id ) === index)
 		  	setData(filteredData)
-		}else{
-			setData([ InputValue ])
-		}
+		}else{ setData([ InputValue ]) }
 	}
   
 	const addInputAnswerHandler =() => {

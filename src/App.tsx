@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import './App.css'
+import './App.scss'
 import { SideBar } from './components/componentsPage/SideBar'
 import { AddQuestionPage } from './pages/AddQuestionPage'
 import { NewExam } from './pages/NewExam'

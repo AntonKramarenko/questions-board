@@ -4,8 +4,11 @@ import { Search } from '../../componentsUI/Search'
 import './SchoolsBoard.scss'
 import TeacherLogo from '../../../assets/img/teacher.png'
 import { ButtonOutline } from '../../componentsUI/ButtonOutline'
+import { useAppSelector } from '../../../store'
 
-export const SchoolsBoard = () => {
+export const SchoolsBoard = React.memo(() => {
+	const examInfo = useAppSelector(state => state.examInfo)	
+	
 	return (
 		<section className='schoolsBoard'>
 			<div className='schoolsBoard__header'>
@@ -19,19 +22,10 @@ export const SchoolsBoard = () => {
 					<input type='checkbox'  className='schoolsBoard__header-checkbox'/>
 				</div>
 				<ul className='schoolsBoard__body'>
-					<SchoolBoardItem/>
-					<SchoolBoardItem/>
-					<SchoolBoardItem/>
-					<SchoolBoardItem/>
-					<SchoolBoardItem/>
-					<SchoolBoardItem/>
-					<SchoolBoardItem/>
-					<SchoolBoardItem/>
-					<SchoolBoardItem/>
-					<SchoolBoardItem/>
+					{examInfo.schools.map(school =><SchoolBoardItem key={school} schollName={school}/> )}
 				</ul>
 			</div>
 			<ButtonOutline btnName='Assign To Class' click={console.log}/>
 		</section>
 	)
-}
+})

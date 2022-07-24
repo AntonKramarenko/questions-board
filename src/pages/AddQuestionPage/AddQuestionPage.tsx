@@ -22,7 +22,6 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 		}
 	}, [])
 
-
 	useEffect(() => {
 	  if(Array.isArray(questionValues.inputQuestion)){
 			let noEmptyQuestion = questionValues.inputQuestion.filter(item => item.questionValue.length || item.imagesQuestion.length)
@@ -67,7 +66,7 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 				titleApprove='Save Question'
 			/>
 			<div className='addQuestionPage__box'>
-				<CeateQuestion/>	
+				<CeateQuestion />	
 			</div>
 		</div>
 	)

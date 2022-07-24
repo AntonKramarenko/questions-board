@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useMemo }  from 'react'
 import { ExamInfoLarge } from '../../componentsUI/ExamInfoLarge'
 import { ExamInfoSmall } from '../../componentsUI/ExamInfoSmall'
 import { QuestionsBox } from '../QuestionsBox'
+import {  useAppSelector } from '../../../store'
 import './ExamInfo.scss'
 
 import ClockLogo from '../../../assets/img/clock.png'
@@ -11,14 +12,14 @@ import HatLogo from '../../../assets/img/hat.png'
 
 
 
-
-
 export const ExamInfo = () => {
+	const examInfo = useAppSelector(state => state.examInfo)
+	
 	return (
 		<div className='examInfo'>
-			<ExamInfoSmall infoImg={HatLogo}  title='Grade' value='Grade 1' />
-			<ExamInfoSmall infoImg={BooksLogo}  title='Subject Area' value='Science' />
-			<ExamInfoLarge  infoImgTop={TargetLogo} infoImgBottom={ClockLogo}/>
+			<ExamInfoSmall infoImg={HatLogo}  title='Grade' value={examInfo.grade}/>
+			<ExamInfoSmall infoImg={BooksLogo}  title='Subject Area' value={examInfo.subject} />
+			<ExamInfoLarge  infoImgTop={TargetLogo} infoImgBottom={ClockLogo} valueTop={examInfo.course} valueBottom={examInfo.time}/>
 			<QuestionsBox/>
 		</div>
 	)
