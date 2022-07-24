@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { SelectImagesBox } from '../SelectImagesBox'
 import { UniversalInput } from '../UniversalInput'
 import './MultipleInputAnswer.scss'

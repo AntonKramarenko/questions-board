@@ -7,7 +7,7 @@ import questions from './questions'
 
 export const store = configureStore({
   reducer: {
-    createMultipleQuestion: createQuestion,
+    createQuestion: createQuestion,
     questions: questions
   }
 })

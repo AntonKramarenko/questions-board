@@ -12,45 +12,44 @@ interface IUniversalInput{
 }
 
 export const UniversalInput:React.FC<IUniversalInput> = (props) => {
-  const {placeholder, selectImages,setSelectImages,id,inputValue,setInputValue} = props
+	const {placeholder, selectImages,setSelectImages,id,inputValue,setInputValue} = props
 
-  useEffect(() => {
+	useEffect(() => {
    
-    return () => {
-       revokeEventFiles(selectImages)
-    }
-  }, [])
+		return () => {
+			revokeEventFiles(selectImages)
+		}
+	}, [])
   
 
-  const readFile = (event:any) => {
-    if(event.target.files) {
-      const fileArr = Array.from(event.target.files).map((file:any) => URL.createObjectURL(file))
-      setSelectImages([...selectImages,...fileArr])
-  
-    }    
-  }
+	const readFile = (event:any) => {
+		if(event.target.files) {
+			const fileArr = Array.from(event.target.files).map((file:any) => URL.createObjectURL(file))
+			setSelectImages([ ...selectImages,...fileArr ])
+		}    
+	}
 
-const revokeEventFiles =(files:any) =>{
-    Array.from(files).map((file:any) => URL.revokeObjectURL(file))
-}
+	const revokeEventFiles =(files:string[]) =>{
+		Array.from(files).map((file:string) => URL.revokeObjectURL(file))
+	}
 
-const writeTextHandler:React.ChangeEventHandler<HTMLTextAreaElement>  =(e)=> {
-  setInputValue(e.target.value)
-  e.target.style.height = '32px';
-  e.target.style.height = `${e.target.scrollHeight}px`; 
-}
+	const writeTextHandler:React.ChangeEventHandler<HTMLTextAreaElement>  =(e)=> {
+		setInputValue(e.target.value)
+		e.target.style.height = '32px'
+		e.target.style.height = `${ e.target.scrollHeight }px` 
+	}
 
-  return (
-    <div className='universalInput'>
-            <textarea 
-              wrap='soft' 
-              placeholder={placeholder} 
-              onChange={(e)=> writeTextHandler(e)} 
-            />
-            <input type="file" id={`file-uploader${placeholder}${id}`} multiple onChange={(e)=> readFile(e)}/>
-            <label htmlFor={`file-uploader${placeholder}${id}`}>
-              <img src={InputLogo} alt="" />
-            </label>
-    </div>
-  )
+	return (
+		<div className='universalInput'>
+			<textarea 
+				wrap='soft' 
+				placeholder={placeholder} 
+				onChange={(e)=> writeTextHandler(e)} 
+			/>
+			<input type='file' id={`file-uploader${ placeholder }${ id }`} multiple onChange={(e)=> readFile(e)}/>
+			<label htmlFor={`file-uploader${ placeholder }${ id }`}>
+				<img src={InputLogo} alt='' />
+			</label>
+		</div>
+	)
 }

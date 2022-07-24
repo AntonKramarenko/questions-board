@@ -39,6 +39,7 @@
     &__actions{
         display: flex;
         align-items: center;
+        position: relative;
 
          &-btn{
             background-color: transparent;
@@ -46,12 +47,12 @@
             border-radius: $radius;
             margin-left: 20px;
             padding: 8px 16px;
-            font-weight: 500;
             display: flex;
             justify-content: center;
             align-items: center;
             color: $color-primary;
             font-weight: 500;
+            position: relative;
 
             img {
                 margin-right: 14px;
@@ -63,6 +64,24 @@
         .active{
             background-color: $color-primary-active;
             color: $color-primary-ligth;
+        }
+
+        .noActive{
+            background-color: $color-routes;
+            color: $color-primary-ligth;
+        }
+
+        .noActive:hover::after{
+            content: 'No data to save';
+            position: absolute;
+            top: 0;
+            color: $color-primary-active;
+            width: 100%;
+            padding: 8px 0;
+            border: $border;
+            border-radius: $radius;
+            background-color: $color-background-light;
+            
         }
     }
 }

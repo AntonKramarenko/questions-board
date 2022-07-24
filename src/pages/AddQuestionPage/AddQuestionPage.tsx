@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CeateQuestion } from '../../components/componentsPage/CeateQuestion'
 import { PageHeader } from '../../components/componentsPage/PageHeader'
@@ -12,7 +12,8 @@ interface IAddQuestionPage{
 
 export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 	const dispatch = useAppDispatch()
-	const questionValues = useAppSelector(state => state.createMultipleQuestion)
+	const questionValues = useAppSelector(state => state.createQuestion)
+	const [ isCanSave, setCanSave ] = useState<boolean>(false)
 	const navigate = useNavigate()
 
 	useEffect(() => {
@@ -20,6 +21,36 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 			dispatch(clearCreateQuestion())
 		}
 	}, [])
+
+
+	useEffect(() => {
+	  if(Array.isArray(questionValues.inputQuestion)){
+			let noEmptyQuestion = questionValues.inputQuestion.filter(item => item.questionValue.length || item.imagesQuestion.length)
+			let noEmptyAnswers = questionValues.answer.filter(item => item.answerValue.length || item.imagesAnswer.length)
+
+			if(questionValues.inputQuestion.length === noEmptyQuestion.length 
+				&& questionValues.answer.length === noEmptyAnswers.length 
+				&& questionValues.inputQuestion.length >3
+			) setCanSave(true)
+			else setCanSave(false)
+	  } else {
+
+			if(questionValues.answer.length >= 2 && questionValues.inputQuestion.questionValue.length || questionValues.inputQuestion.imagesQuestion.length  ){
+				let noEmptyAnswers = questionValues.answer.filter(item => item.answerValue.length || item.imagesAnswer.length)
+
+				if(noEmptyAnswers.length === questionValues.answer.length) setCanSave(true)
+				else setCanSave(false)
+			}
+			
+
+
+			// if(questionValues.answer.length >= 2 
+			// 	&& questionValues.inputQuestion.questionValue.length 
+			// 	|| questionValues.inputQuestion.imagesQuestion.length
+			// ) setCanSave(true)
+			// else setCanSave(false)
+	  }
+	}, [ questionValues ])
 	
 
 	const clickRejectHandler =()=>{
@@ -27,16 +58,21 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 	}
 
 	const clickApproveHandler =()=>{
-		const currentQuestion = {...questionValues, id: Date.now()}
-		dispatch(addQuestion(currentQuestion))
-		navigate('/exams/New-Exam-Title-Here')
+		if(isCanSave){
+			const currentQuestion = {...questionValues, id: Date.now()}
+			dispatch(addQuestion(currentQuestion))
+			navigate('/exams/New-Exam-Title-Here')
+		}
 	}
 
+
+	console.log(isCanSave)
 	
 
 	return (
 		<div className='addQuestionPage'>
 			<PageHeader  
+				isCanSave={isCanSave}
 				title='Add Question' 
 				clickReject={()=> clickRejectHandler()} 
 				clickApprove={()=>clickApproveHandler()} 
