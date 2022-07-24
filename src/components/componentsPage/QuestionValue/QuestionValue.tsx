@@ -20,8 +20,8 @@ export const QuestionValue:React.FC<IQuestionItemMultiple> = (props) => {
 	return (
 		<div className='questionValue'>
 			{questonType === 'Matching' 
-			? <h5 className='questionValue__type matching'>{questonType}</h5>
-			: <h5 className='questionValue__type multiple'>{questonType}</h5>
+				? <h5 className='questionValue__type matching'>{questonType}</h5>
+				: <h5 className='questionValue__type multiple'>{questonType}</h5>
 			}
 			<div className='questionValue__question'>
 				{Array.isArray(inputQuestion) 

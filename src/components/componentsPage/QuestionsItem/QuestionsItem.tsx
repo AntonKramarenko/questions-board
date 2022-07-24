@@ -4,15 +4,23 @@ import { TrashIcon } from '../../componentsUI/TrashIcon'
 import { EditIcon } from '../../componentsUI/EditIcon'
 import { IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer, IMultipleInputQuestion } from '../../../types'
 import { QuestionValue } from '../QuestionValue'
+import { useAppDispatch } from '../../../store'
+import { removeQuestion } from '../../../store/questions'
 
 interface IQuestionsItem{
+	id:number
     indexValue:number,
     questonType:string,
 	inputQuestion:IMultipleInputQuestion| IMatchingItemQuestion[] ,
 	answer:IMultipleInputAnswer[] | IMatchingItemAnswer[]
 }
 
-export const QuestionsItem:React.FC<IQuestionsItem> = ({indexValue,questonType, inputQuestion,answer}) => {
+export const QuestionsItem:React.FC<IQuestionsItem> = ({indexValue,questonType, inputQuestion,answer,id}) => {
+	const dispatch = useAppDispatch()
+
+	const clickDeleteItemHandler = () => {
+		dispatch(removeQuestion(id))
+	}
 	
 	return (
 		<div className='questionsItem'>
@@ -22,7 +30,7 @@ export const QuestionsItem:React.FC<IQuestionsItem> = ({indexValue,questonType, 
 			</div>
 			<div className='questionsItem__standart'>7A</div>
 			<div className='questionsItem__actions'>
-				<TrashIcon/>
+				<TrashIcon click={clickDeleteItemHandler}/>
 				<EditIcon/>
 			</div>
 		</div>

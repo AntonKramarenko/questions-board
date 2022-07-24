@@ -33,7 +33,7 @@ export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id,setData})
 					setInputValue={setAnswerValue}
 				/>
 			</div>
-			{selectImagesValue.length>0  && <SelectImagesBox images={selectImagesValue}/>}
+			{selectImagesValue.length>0  && <SelectImagesBox isCanDelete={true} images={selectImagesValue}/>}
 			{isCorrectAnswer ? <div className='multipleInputAnswer__correct'> <span>&#10003;</span>Correct Answer</div> : null }
 		</div>    
 	)

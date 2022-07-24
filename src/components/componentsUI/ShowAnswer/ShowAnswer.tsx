@@ -11,7 +11,7 @@ export const ShowAnswer = (props:IMatchingItemAnswer) => {
 				{id.length && <span className='showAnswer__count'>{id}.</span>  }
 				<div className='showAnswer__answer'>{answerValue}</div>
 			</div>
-			<SelectImagesBox images={imagesAnswer}/>
+			<SelectImagesBox isCanDelete={false} images={imagesAnswer}/>
 		</div>
 	)
 }

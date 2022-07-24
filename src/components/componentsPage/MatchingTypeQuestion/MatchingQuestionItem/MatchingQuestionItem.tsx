@@ -45,7 +45,7 @@ export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change
 						setSelectImages={setImagesQuestion} 
 					/>
 				</div> 
-				{imagesQuestion.length>0  && <SelectImagesBox images={imagesQuestion}/>}
+				{imagesQuestion.length>0  && <SelectImagesBox isCanDelete={true} images={imagesQuestion}/>}
 			</div>
 			<div 
 				className='matchingQuestionItem answer'>
@@ -59,7 +59,7 @@ export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change
 						setSelectImages={setImagesAnswer}
 					/>
 				</div>
-				{imagesAnswer.length>0  && <SelectImagesBox images={imagesAnswer}/>}
+				{imagesAnswer.length>0  && <SelectImagesBox isCanDelete={true} images={imagesAnswer}/>}
 			</div>
 		</>
 	)

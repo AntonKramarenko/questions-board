@@ -19,7 +19,7 @@ export const QuestionsBox = () => {
 				<ButtonOutline btnName='Add Question' click={addQuestionHandler}/>
 			</div>
 			<div className='questionsBox__body'>
-				<Questions questions={questions}/>
+				{questions.length > 0 && <Questions questions={questions}/>}
 			</div>
 		</section>
 	)

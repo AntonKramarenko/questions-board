@@ -10,9 +10,14 @@ export const question = createSlice({
 	reducers: {
 		addQuestion(state:IQuestionState[],action:PayloadAction<IQuestionState>){
 			state.push(action.payload)
+		},
+		removeQuestion(state:IQuestionState[],action:PayloadAction<number>){
+		
+			return state.filter(question => question.id !== action.payload)
+			
 		}
 	}
 })
 
-export const { addQuestion} = question.actions
+export const { addQuestion,removeQuestion} = question.actions
 export default question.reducer

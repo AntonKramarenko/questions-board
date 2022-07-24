@@ -54,7 +54,7 @@ export const InputQuestion:React.FC = ({}) => {
 					<img src={InputLogo} alt='inputFile' />
 				</label>
 			</div>
-			{selectImages.length>0  && <SelectImagesBox images={selectImages}/>}
+			{selectImages.length>0  && <SelectImagesBox isCanDelete={true} images={selectImages}/>}
 		</div>
 	)
 }

@@ -4,16 +4,23 @@ import TrashLogo from '../../../assets/icons/trash.png'
 
 interface ISelectImgQuestion{
     img:string,
-    clickTrash:(id:string) => void
+    clickTrash:(id:string) => void,
+    isCanDelete: boolean
 }
 
-export const SelectImgQuestion:React.FC<ISelectImgQuestion> = ({img,clickTrash}) => {
-  return (
-    <div className='selectImgQuestion'>
-        <div className="selectImgQuestion__trash" onClick={()=> clickTrash(img)}>
-          <img src={TrashLogo} alt="" className='selectImgQuestion__trash-img'/>
-        </div>
-        <img src={img} alt={img}  className='selectImgQuestion__main'/>
-    </div>
-  )
+export const SelectImgQuestion:React.FC<ISelectImgQuestion> = ({img,clickTrash,isCanDelete}) => {
+
+	console.log('SelectImgQuestion',  isCanDelete)
+  
+	return (
+		<div className='selectImgQuestion'>
+			{isCanDelete 
+				? <div className='selectImgQuestion__trash' onClick={()=> clickTrash(img)}>
+					<img src={TrashLogo} alt='' className='selectImgQuestion__trash-img'/>
+			  </div>
+				: null
+			}
+			<img src={img} alt={img}  className='selectImgQuestion__main'/>
+		</div>
+	)
 }

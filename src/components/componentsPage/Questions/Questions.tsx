@@ -17,6 +17,7 @@ export const Questions:React.FC<IQuestion> = ({questions}) => {
 				{questions.map((item:IQuestionState ,index: number) => <QuestionsItem 
 					key={`${ item.id }`} 
 					indexValue={index+1}  
+					id={item.id}
 					questonType={item.questonType} 
 					inputQuestion={item.inputQuestion}  
 					answer={item.answer}

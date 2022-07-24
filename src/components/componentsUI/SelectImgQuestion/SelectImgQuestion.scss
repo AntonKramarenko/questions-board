@@ -30,6 +30,12 @@
         }
     }
 
+    &__trash:hover{
+        img{
+            transform: scale(1.1);
+        }
+    }
+
     &__main{
         object-fit:contain;
         width: 100%;

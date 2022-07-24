@@ -20,7 +20,7 @@ export const ShowQuestion:React.FC<IShowQuestion> = (props) => {
 				{id?.length && <span className='showQuestion__count'>{id}.</span>  }
 				<div className='showQuestion__answer'>{questionValue}</div>
 			</div>
-			<SelectImagesBox images={imagesQuestion}/>
+			<SelectImagesBox images={imagesQuestion} isCanDelete={false}/>
 		</div>
 	)
 }
