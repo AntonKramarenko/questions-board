@@ -1,28 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
-import { useAppDispatch } from '../../../store'
-import { answers, changeType } from '../../../store/createQuestion'
-import { IMultipleInputItem } from '../../../types'
+import React, {useEffect, useState } from 'react'
 import { AnswerPoints } from '../../componentsUI/AnswerPoints'
 import { ButtonOutline } from '../../componentsUI/ButtonOutline'
 import { InputQuestion } from '../../componentsUI/InputQuestion'
 import { MultipleInputAnswer } from '../../componentsUI/MultipleInputAnswer'
 import { TeacherComments } from '../../componentsUI/TeacherComments/TeacherComments'
+import { IMultipleInputItem } from '../../../types'
+import { useAppDispatch } from '../../../store'
+import { answers } from '../../../store/createQuestion'
 import './MultipleTypeQuestion.scss'
 
-interface IMultipleTypeQuestion{
-}
 
-
-export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = () => {
+export const MultipleTypeQuestion:React.FC = React.memo(() => {
 	const [ answersCount,setAnswersCount ] = useState<string[]>([ '1','2' ])
 	const [ data, setData ] = useState<IMultipleInputItem[]>([])
 	const dispatch = useAppDispatch()
 	
 	useEffect(() => {
-		if(data.length){
-			dispatch(answers(data))
-		}
+		if(data.length) dispatch(answers(data))
 	}, [ data ])
 
 	const addData = (InputValue:any)=>{
@@ -35,9 +29,6 @@ export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = () => {
 		const newAnswerId = `${ answersCount.length+1 }`
 		setAnswersCount([ ...answersCount, newAnswerId ])
 	}
-
-	console.log(data)
-	
 
 	return (
 		<div className='multipleTypeQuestion'>
@@ -54,4 +45,4 @@ export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = () => {
 			<TeacherComments/>
 		</div>
 	)
-}
+})

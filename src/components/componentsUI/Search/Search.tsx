@@ -1,12 +1,12 @@
 import React from 'react'
+import { HiSearch } from 'react-icons/hi'
 import './Search.scss'
-import { HiSearch } from "react-icons/hi";
 
-export const Search = () => {
-  return (
-    <div className='search'> 
-        <HiSearch/>
-        <input  type='text'/>
-    </div>
-  )
-}
+export const Search:React.FC = React.memo(() => {
+	return (
+		<div className='search'> 
+			<HiSearch/>
+			<input  type='text'/>
+		</div>
+	)
+})

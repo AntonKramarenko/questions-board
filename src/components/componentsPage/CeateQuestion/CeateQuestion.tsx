@@ -1,12 +1,10 @@
 import React, {  useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
-import { useAppDispatch, useAppSelector } from '../../../store'
-import { questionType } from '../../../store/createQuestion'
-import { IQuestionState } from '../../../types'
 import { QuestionTypeSelect } from '../../componentsUI/QuestionTypeSelect'
 import { MatchingTypeQuestion } from '../MatchingTypeQuestion'
 import { MultipleTypeQuestion } from '../MultipleTypeQuestion'
+import { useAppDispatch} from '../../../store'
+import { questionType } from '../../../store/createQuestion'
 import './CeateQuestion.scss'
 
 
@@ -20,8 +18,6 @@ export const CeateQuestion:React.FC = React.memo(() => {
 			setType(context.questonType)
 		}
 	}, [ context ])
-	
-	
 
 	useEffect(()=>{
 		dispatch(questionType(questonType))

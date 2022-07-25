@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import './QuestionValue.scss'
-import {  IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer, IMultipleInputQuestion } from '../../../types'
 import { ShowAnswer } from '../../componentsUI/ShowAnswer'
 import { ShowQuestion } from '../../componentsUI/ShowQuestion'
-
+import {  IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer, IMultipleInputQuestion } from '../../../types'
+import './QuestionValue.scss'
 
 interface IQuestionItemMultiple{
 	questonType:string,
@@ -11,10 +10,8 @@ interface IQuestionItemMultiple{
 	answer:IMultipleInputAnswer[] | IMatchingItemAnswer[]
 }
 
-export const QuestionValue:React.FC<IQuestionItemMultiple> = (props) => {
-
+export const QuestionValue:React.FC<IQuestionItemMultiple> = React.memo((props) => {
 	const {questonType,inputQuestion,answer} = props
-    
 	const [ isVisible,setVisible ] = useState<boolean>(false)
 
 	return (
@@ -29,12 +26,11 @@ export const QuestionValue:React.FC<IQuestionItemMultiple> = (props) => {
 					: <ShowQuestion key={inputQuestion.questionValue} {...inputQuestion}/>
 				}
 			</div>
-			
 			{isVisible && <div className='questionValue__answers'>
 				<div className='questionValue__answers-title'>Answer(s)</div>
-				
 				{answer.map(ans =><ShowAnswer key={ans.id} id={ans.id} answerValue={ans.answerValue} imagesAnswer={ans.imagesAnswer}/> )}
-			</div>}
+			</div>
+			}
 			<div 
 				className='questionValue__showAnswer' 
 				onClick={()=> setVisible(!isVisible)}> 
@@ -45,4 +41,4 @@ export const QuestionValue:React.FC<IQuestionItemMultiple> = (props) => {
 			</div>
 		</div>
 	)
-}
+})

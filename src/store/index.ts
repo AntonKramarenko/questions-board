@@ -4,8 +4,6 @@ import createQuestion from './createQuestion'
 import examInfo from './examInfo'
 import questions from './questions'
 
-
-
 export const store = configureStore({
 	reducer: {
 		createQuestion: createQuestion,

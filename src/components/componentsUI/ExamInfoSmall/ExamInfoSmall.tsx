@@ -8,7 +8,6 @@ interface IExamInfoSmall{
 }
 
 export const ExamInfoSmall:React.FC<IExamInfoSmall> = React.memo(({infoImg,title,value}) => {
-  
 	return (
 		<div className='examInfoSmall'>
 			<img src={infoImg} alt='' />

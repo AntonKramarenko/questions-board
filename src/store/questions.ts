@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {  IQuestionState } from '../types'
 
-
 const initialState: IQuestionState[] = []
 
 export const question = createSlice({

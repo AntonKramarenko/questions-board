@@ -1,9 +1,9 @@
 import React from 'react'
-import './ShowAnswer.scss'
 import { SelectImagesBox } from '../SelectImagesBox'
 import { IMatchingItemAnswer } from '../../../types'
+import './ShowAnswer.scss'
 
-export const ShowAnswer = (props:IMatchingItemAnswer) => {
+export const ShowAnswer:React.FC<IMatchingItemAnswer> = React.memo((props) => {
 	const {id, answerValue, imagesAnswer} = props
 	return (
 		<div className='showAnswer'>
@@ -14,4 +14,4 @@ export const ShowAnswer = (props:IMatchingItemAnswer) => {
 			<SelectImagesBox isCanDelete={false} images={imagesAnswer}/>
 		</div>
 	)
-}
+})

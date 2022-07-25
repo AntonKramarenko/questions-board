@@ -1,10 +1,10 @@
 import React from 'react'
 import { SchoolBoardItem } from '../../componentsUI/SchoolBoardItem'
-import { Search } from '../../componentsUI/Search'
-import './SchoolsBoard.scss'
-import TeacherLogo from '../../../assets/img/teacher.png'
 import { ButtonOutline } from '../../componentsUI/ButtonOutline'
+import { Search } from '../../componentsUI/Search'
+import TeacherLogo from '../../../assets/img/teacher.png'
 import { useAppSelector } from '../../../store'
+import './SchoolsBoard.scss'
 
 export const SchoolsBoard = React.memo(() => {
 	const examInfo = useAppSelector(state => state.examInfo)	
@@ -13,7 +13,7 @@ export const SchoolsBoard = React.memo(() => {
 		<section className='schoolsBoard'>
 			<div className='schoolsBoard__header'>
 				<img src={TeacherLogo} alt='' />
-            Assigned Teachers
+            	Assigned Teachers
 			</div>
 			<Search/>
 			<div className='schoolsBoard__container'>

@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './TeacherComments.scss'
+import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
 import NoteLogo from '../../../assets/img/note.png'
 import { useAppDispatch } from '../../../store'
 import { teacherComment } from '../../../store/createQuestion'
-import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
+import './TeacherComments.scss'
 
-export const TeacherComments = () => {
+export const TeacherComments:React.FC = React.memo(() => {
 	const [ teacherComments,setComments ] = useState<string>('')
 	const context = useContext(SelectQuestionContext)
 	const dispatch = useAppDispatch()
@@ -20,10 +20,9 @@ export const TeacherComments = () => {
 		dispatch(teacherComment(teacherComments))
 	}, [ teacherComments ])
   
-
 	return (
 		<div className='teacherComments'>
-			<img src={NoteLogo} alt='' />
+			<img src={NoteLogo} alt='teacherComments' />
 			<textarea 
 				value={teacherComments}
 				placeholder='Teacher comment...' 
@@ -31,4 +30,4 @@ export const TeacherComments = () => {
 			/>
 		</div>
 	)
-}
+})

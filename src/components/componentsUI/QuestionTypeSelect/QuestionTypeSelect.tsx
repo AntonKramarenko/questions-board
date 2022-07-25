@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
-import './QuestionTypeSelect.scss'
-import { IoCaretDownOutline,IoCaretUpOutline } from 'react-icons/io5'
+import { IoCaretDownOutline } from 'react-icons/io5'
 import ThinkLogo from '../../../assets/img/think.png'
-import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../../store'
-import { changeType, questionType } from '../../../store/createQuestion'
-
+import { useAppDispatch } from '../../../store'
+import { changeType } from '../../../store/createQuestion'
+import './QuestionTypeSelect.scss'
 
 interface IQuestionTypeSelect{
   questonType:string,
   setType:(value:string)=> void
 }
 
-export const QuestionTypeSelect: React.FC<IQuestionTypeSelect> = ({questonType,setType}) => {
+export const QuestionTypeSelect: React.FC<IQuestionTypeSelect> = React.memo(({questonType,setType}) => {
 	const [ isVisible,setVisible ] = useState(false)
 	const dispatch = useAppDispatch()
 	
@@ -21,7 +19,6 @@ export const QuestionTypeSelect: React.FC<IQuestionTypeSelect> = ({questonType,s
 		setType(valueType)
 		setVisible(false)
 	}
-
 
 	return (
 		<div className='questionTypeSelect'>
@@ -35,4 +32,4 @@ export const QuestionTypeSelect: React.FC<IQuestionTypeSelect> = ({questonType,s
 			</div>}
 		</div>
 	)
-}
+})

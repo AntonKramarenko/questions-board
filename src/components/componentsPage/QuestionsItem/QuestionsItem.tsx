@@ -1,12 +1,12 @@
 import React from 'react'
-import './QuestionsItem.scss'
+import { useNavigate } from 'react-router-dom'
 import { TrashIcon } from '../../componentsUI/TrashIcon'
 import { EditIcon } from '../../componentsUI/EditIcon'
-import { IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer, IMultipleInputQuestion } from '../../../types'
 import { QuestionValue } from '../QuestionValue'
+import { IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer, IMultipleInputQuestion } from '../../../types'
 import { useAppDispatch } from '../../../store'
 import { removeQuestion } from '../../../store/questions'
-import { useNavigate } from 'react-router-dom'
+import './QuestionsItem.scss'
 
 interface IQuestionsItem{
 	id:number
@@ -25,7 +25,7 @@ export const QuestionsItem:React.FC<IQuestionsItem> = ({indexValue,questonType, 
 	}
 
 	const clickEditHansler = () =>{
-		navigate(`/exams/New-Exam-Title-Here/new-question/${id}`)
+		navigate(`/exams/New-Exam-Title-Here/new-question/${ id }`)
 	}
 
 	return (

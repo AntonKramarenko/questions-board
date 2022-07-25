@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
-import { useAppDispatch } from '../../../store'
-import { answers, changeType, clearCreateQuestion, inputQuestion } from '../../../store/createQuestion'
-import { IMatchingItem, IMatchingItemAnswer, IMatchingItemQuestion } from '../../../types'
+import React, { useEffect, useState } from 'react'
 import { AnswerPoints } from '../../componentsUI/AnswerPoints'
 import { TeacherComments } from '../../componentsUI/TeacherComments/TeacherComments'
 import { MatchingQuestionItem } from './MatchingQuestionItem/MatchingQuestionItem'
+import { IMatchingItem, IMatchingItemAnswer, IMatchingItemQuestion } from '../../../types'
+import { useAppDispatch } from '../../../store'
+import { answers, inputQuestion } from '../../../store/createQuestion'
 import './MatchingTypeQuestion.scss'
 
 export const MatchingTypeQuestion:React.FC = React.memo(() => {
@@ -32,11 +31,10 @@ export const MatchingTypeQuestion:React.FC = React.memo(() => {
 	}
 	
 	const clickItemHandler =(inputValue:IMatchingItem)=>{
-		
 		if(questionValues){
 			const arr = [ ...questionValues, inputValue ].reverse()
 			const filteredData = arr.filter((value, index, self) => self.findIndex(v => v.id === value.id ) === index)
-			setQuestionValues(filteredData)
+			setQuestionValues(filteredData.reverse())
 		}else{
 			setQuestionValues([ inputValue ])
 		}

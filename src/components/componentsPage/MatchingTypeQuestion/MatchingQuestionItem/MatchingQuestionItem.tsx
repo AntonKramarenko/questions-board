@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { SelectQuestionContext } from '../../../../pages/AddQuestionPage'
-import { IMatchingItem } from '../../../../types'
 import { SelectImagesBox } from '../../../componentsUI/SelectImagesBox'
 import { UniversalInput } from '../../../componentsUI/UniversalInput'
+import { IMatchingItem } from '../../../../types'
 import './MatchingQuestionItem.scss'
-
 
 interface IMatchingQuestionItem{
     id:string,
@@ -16,9 +15,11 @@ export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change
 	const [ imagesAnswer,setImagesAnswer ] = useState<string[]>([])
 	const [ questionValue,setQuestionValue ] = useState<string>('')
 	const [ answerValue,setAnswerValue ] = useState<string>('')
+
 	const [ isInputClick, setInputClick ] = useState(false)
 	const [ isEmpty, setIsEmpty ] = useState(true)
 	const context = useContext(SelectQuestionContext)
+
 	const dataItem = {
 		id:id,  
 		questionValue:questionValue,
@@ -43,12 +44,9 @@ export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change
 			}
 		}
 	}, [ context ])
-
-
-	
 	
 	useEffect(() => {
-		if(imagesQuestion.length ||questionValue && imagesAnswer.length || answerValue){
+		if(imagesQuestion.length || questionValue && imagesAnswer.length || answerValue){
 			setIsEmpty(false)
 			change(dataItem)
 		}else {
@@ -56,7 +54,6 @@ export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change
 		}
 	}, [ imagesQuestion, imagesAnswer, questionValue,answerValue ])
 
-    
 	return (
 		<>
 			<div className={ isInputClick && isEmpty ? 'matchingQuestionItem question isEmpty' : 'matchingQuestionItem question'} > 

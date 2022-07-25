@@ -1,11 +1,12 @@
 import React from 'react'
 import './ButtonOutline.scss'
+
 interface IButtonOutline{
   btnName:string,
   click:()=> void
 }
 
-export const ButtonOutline: React.FC<IButtonOutline> = ({btnName,click}) => {
+export const ButtonOutline: React.FC<IButtonOutline> = React.memo(({btnName,click}) => {
 	return (
 		<button 
 			className='buttonOutline' 
@@ -14,4 +15,4 @@ export const ButtonOutline: React.FC<IButtonOutline> = ({btnName,click}) => {
 			{btnName}
 		</button>
 	)
-}
+})

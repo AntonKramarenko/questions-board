@@ -12,7 +12,7 @@ import HatLogo from '../../../assets/img/hat.png'
 
 
 
-export const ExamInfo = () => {
+export const ExamInfo:React.FC = React.memo(() => {
 	const examInfo = useAppSelector(state => state.examInfo)
 	
 	return (
@@ -23,4 +23,4 @@ export const ExamInfo = () => {
 			<QuestionsBox/>
 		</div>
 	)
-}
+})

@@ -1,6 +1,6 @@
 import React from 'react'
-import './SchoolBoardItem.scss'
 import { IoCaretForward } from 'react-icons/io5'
+import './SchoolBoardItem.scss'
 
 interface ISchoolBoardItem{
  schollName:string

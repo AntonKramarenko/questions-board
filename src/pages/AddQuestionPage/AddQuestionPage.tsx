@@ -2,18 +2,15 @@ import React, {  useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { CeateQuestion } from '../../components/componentsPage/CeateQuestion'
 import { PageHeader } from '../../components/componentsPage/PageHeader'
+import { IQuestionState } from '../../types'
 import { useAppDispatch, useAppSelector } from '../../store'
 import {  clearCreateQuestion, setCreateQuestionValue } from '../../store/createQuestion'
 import { addQuestion, changeQuestion } from '../../store/questions'
-import { IQuestionState } from '../../types'
 import './AddQuestionPage.scss'
 
 export const SelectQuestionContext = React.createContext< IQuestionState| null>(null)
 
-interface IAddQuestionPage{
-}
-
-export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
+export const AddQuestionPage:React.FC = React.memo(() => {
 	const [ isCanSave, setCanSave ] = useState<boolean>(false)
 	const [ editQuestionValue, setEditQuestionValue ] = useState<IQuestionState | null>(null)
 	const questions = useAppSelector(state => state.questions)
@@ -36,12 +33,10 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 	}, [ QuestionId ])
 
 	useEffect(() => {
-		if(editQuestionValue){
-			dispatch(setCreateQuestionValue(editQuestionValue))
-		}
+		if(editQuestionValue) dispatch(setCreateQuestionValue(editQuestionValue))
 	}, [ editQuestionValue ])
 
-
+	// check the empty inputs and return boolean value
 	useEffect(() => {
 	  if(Array.isArray(questionValues.inputQuestion)){
 			let noEmptyQuestion = questionValues.inputQuestion.filter(item => item.questionValue.length || item.imagesQuestion.length)
@@ -61,7 +56,6 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 			}
 	  }
 	}, [ questionValues ])
-	
 
 	const clickRejectHandler =()=>{
 		navigate('/exams/New-Exam-Title-Here')
@@ -79,9 +73,6 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 		}
 	}
 
-
-	
-	
 	return (
 		<div className='addQuestionPage'>
 			<PageHeader  
@@ -100,4 +91,4 @@ export const AddQuestionPage:React.FC<IAddQuestionPage> = () => {
 			</div>
 		</div>
 	)
-}
+})

@@ -1,21 +1,27 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import './InputQuestion.scss'
+import { SelectImagesBox } from '../SelectImagesBox'
+import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
 import QuestionLogo from '../../../assets/img/question.png'
 import InputLogo from '../../../assets/icons/mountain.png'
-import { SelectImagesBox } from '../SelectImagesBox'
 import { useAppDispatch } from '../../../store'
 import { inputQuestion } from '../../../store/createQuestion'
-import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
+import './InputQuestion.scss'
 
-
-export const InputQuestion:React.FC = ({}) => {
+export const InputQuestion:React.FC = React.memo(({}) => {
 	const [ selectImages, setSelectImages ] = useState<string[]>([])
 	const [ questionValue, setQuestionVaue ] = useState<string>('')
-	const [isInputClick, setInputClick] = useState(false)
-	const [isEmpty, setIsEmpty] = useState(true)
+	const [ isInputClick, setInputClick ] = useState<boolean>(false)
+	const [ isEmpty, setIsEmpty ] = useState<boolean>(true)
 	const dispatch = useAppDispatch()
 	const inputRef = useRef<HTMLTextAreaElement>(null)
 	const context = useContext(SelectQuestionContext)
+
+	useEffect(() => {
+		inputRef.current?.focus()
+	  	return () => {
+			revokeEventFiles(selectImages)
+	  	}
+	}, [])
 
 	useEffect(() => {
 		if(context && !Array.isArray(context.inputQuestion) ){
@@ -25,21 +31,12 @@ export const InputQuestion:React.FC = ({}) => {
 	}, [ context ])
 
 	useEffect(() => {
-		inputRef.current?.focus()
-
-	  return () => {
-			revokeEventFiles(selectImages)
-	  }
-	}, [])
-
-	useEffect(() => {
 		if(questionValue.length || selectImages.length) setIsEmpty(false)
 		else setIsEmpty(true)
 
 		dispatch(inputQuestion({imagesQuestion:selectImages, questionValue: questionValue}))
 	}, [ selectImages, questionValue ])
 	
-
 	const readFile:React.ChangeEventHandler<HTMLInputElement>  = (event) => {
 		if(event.target.files) {
 			const fileArr = Array.from(event.target.files).map((file:any) => URL.createObjectURL(file))
@@ -82,4 +79,4 @@ export const InputQuestion:React.FC = ({}) => {
 			{selectImages.length>0  && <SelectImagesBox isCanDelete={true} images={selectImages}/>}
 		</div>
 	)
-}
+})

@@ -9,14 +9,15 @@ interface IMultipleInputAnswer{
 	setData:(value:any) => void,
 }
 
-export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id,setData}) => {
+export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = React.memo(({id,setData}) => {
 	const [ selectImagesValue,setSelectImages ] = useState<string[]>([])
 	const [ isCorrectAnswer,setCorrectAnswer ] = useState<boolean>(false)
 	const [ answerValue,setAnswerValue ] = useState<string>('')
 	const [ isInputClick, setInputClick ] = useState(false)
 	const [ isEmpty, setIsEmpty ] = useState(true)
-	const inputData = {imagesAnswer:selectImagesValue, isCorrectAnswer: isCorrectAnswer,answerValue:answerValue,id: id}
 	const context = useContext(SelectQuestionContext)
+
+	const inputData = {imagesAnswer:selectImagesValue, isCorrectAnswer: isCorrectAnswer,answerValue:answerValue,id: id}
 
 	useEffect(() => {
 		if(context ){
@@ -31,7 +32,6 @@ export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id,setData})
 	}, [ context ])
 
 	useEffect(() => {
-		
 		if(isInputClick){
 			if(answerValue.length || selectImagesValue.length) {
 				setData(inputData)
@@ -40,12 +40,9 @@ export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id,setData})
 				setData(inputData)
 				setIsEmpty(true)
 			}
-
 		}
 	}, [ selectImagesValue, isCorrectAnswer, answerValue ])
 
-	
-	
 	return (
 		<div className={isInputClick && isEmpty  ? 'multipleInputAnswer isEmpty' : 'multipleInputAnswer'} >
 			<div className='multipleInputAnswer__header'>
@@ -64,4 +61,4 @@ export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id,setData})
 			{isCorrectAnswer ? <div className='multipleInputAnswer__correct'> <span>&#10003;</span>Correct Answer</div> : null }
 		</div>    
 	)
-}
+})

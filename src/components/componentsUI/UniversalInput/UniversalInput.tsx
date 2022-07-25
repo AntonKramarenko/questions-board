@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react'
-import './UniversalInput.scss'
+import React, { useEffect} from 'react'
 import InputLogo from '../../../assets/icons/mountain.png'
+import './UniversalInput.scss'
 
 interface IUniversalInput{
   id: string,
@@ -12,11 +12,10 @@ interface IUniversalInput{
   inputClick?: (value:boolean) => void
 }
 
-export const UniversalInput:React.FC<IUniversalInput> = (props) => {
+export const UniversalInput:React.FC<IUniversalInput> = React.memo((props) => {
 	const {placeholder, selectImages,setSelectImages,id,inputValue,setInputValue,inputClick} = props
 
 	useEffect(() => {
-   
 		return () => {
 			revokeEventFiles(selectImages)
 		}
@@ -39,7 +38,6 @@ export const UniversalInput:React.FC<IUniversalInput> = (props) => {
 		e.target.style.height = '32px'
 		e.target.style.height = `${ e.target.scrollHeight }px` 
 	}
-	
 
 	return (
 		<div className='universalInput'>
@@ -51,8 +49,8 @@ export const UniversalInput:React.FC<IUniversalInput> = (props) => {
 			/>
 			<input type='file' id={`file-uploader${ placeholder }${ id }`} multiple onChange={(e)=> readFile(e)}/>
 			<label htmlFor={`file-uploader${ placeholder }${ id }`}>
-				<img src={InputLogo} alt='' />
+				<img src={InputLogo} alt='input' />
 			</label>
 		</div>
 	)
-}
+})

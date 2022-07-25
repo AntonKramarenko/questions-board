@@ -41,18 +41,14 @@ export const createQuestion = createSlice({
 		teacherComment(state:CreateQuestioState, action:PayloadAction<string>){
 			state.teacherComment = action.payload
 		},
-		clearCreateQuestion(state:CreateQuestioState){
+		clearCreateQuestion(){
 			return initialState
 		},
 		changeType(state:CreateQuestioState){
-			state.inputQuestion = {
-				imagesQuestion:[],
-				questionValue:''
-			}
-			state.answer = []
+			state.inputQuestion = initialState.inputQuestion
+			state.answer = initialState.answer
 		},
 		setCreateQuestionValue(state:CreateQuestioState, action:PayloadAction<CreateQuestioState>){
-			//console.log('setCreateQuestionValue',action.payload);
 			return action.payload
 		}
 	}

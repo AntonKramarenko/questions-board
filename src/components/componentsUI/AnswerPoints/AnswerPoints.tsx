@@ -1,24 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
+import { ButtonOutline } from '../ButtonOutline'
 import { useAppDispatch } from '../../../store'
 import { point } from '../../../store/createQuestion'
-import { ButtonOutline } from '../ButtonOutline'
 import './AnswerPoints.scss'
 
-export const AnswerPoints = () => {
+export const AnswerPoints:React.FC = React.memo(() => {
 	const [ answerPoit,setAnswerPoint ] = useState<number>(1)
 	const dispatch = useAppDispatch()
 	const context = useContext(SelectQuestionContext)
 
 	useEffect(() => {
-		if(context ){
-			setAnswerPoint(context.points)
-		}
+		if(context ) setAnswerPoint(context.points)
 	}, [ context ])
 
 	useEffect(() => {
 		dispatch(point(answerPoit))
-	}, [answerPoit])
+	}, [ answerPoit ])
 	
 
 	const setAnswerPointsHandler =()=>{
@@ -35,4 +33,4 @@ export const AnswerPoints = () => {
 			<ButtonOutline btnName='Change' click={()=>setAnswerPointsHandler()}/>
 		</div>
 	)
-}
+})
