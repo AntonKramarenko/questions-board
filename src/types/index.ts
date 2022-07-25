@@ -17,6 +17,7 @@ export interface IMatchingItemQuestion  {
 }
 export interface IMatchingItemAnswer  {
   id:string,  
+  isCorrectAnswer?:boolean,
   answerValue:string,
   imagesAnswer:string[]
 }

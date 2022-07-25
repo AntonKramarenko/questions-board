@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
 import { useAppDispatch } from '../../../store'
 import { answers, changeType } from '../../../store/createQuestion'
 import { IMultipleInputItem } from '../../../types'
@@ -17,12 +18,6 @@ export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = () => {
 	const [ answersCount,setAnswersCount ] = useState<string[]>([ '1','2' ])
 	const [ data, setData ] = useState<IMultipleInputItem[]>([])
 	const dispatch = useAppDispatch()
-
-	useEffect(() => {
-	  return () => {
-			dispatch(changeType())
-		}
-	}, [])
 	
 	useEffect(() => {
 		if(data.length){
@@ -31,17 +26,18 @@ export const MultipleTypeQuestion:React.FC<IMultipleTypeQuestion> = () => {
 	}, [ data ])
 
 	const addData = (InputValue:any)=>{
-		if(data){
-			const arr = [ ...data, InputValue ].reverse()
-			const filteredData = arr.filter((value, index, self) => self.findIndex(v => v.id === value.id ) === index)
-		  	setData(filteredData)
-		}else{ setData([ InputValue ]) }
+		const arr = [ ...data, InputValue ].reverse()
+		const filteredData = arr.filter((value, index, self) => self.findIndex(v => v.id === value.id ) === index)
+		setData(filteredData.reverse())
 	}
   
 	const addInputAnswerHandler =() => {
 		const newAnswerId = `${ answersCount.length+1 }`
 		setAnswersCount([ ...answersCount, newAnswerId ])
 	}
+
+	console.log(data)
+	
 
 	return (
 		<div className='multipleTypeQuestion'>

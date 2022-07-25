@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ExamInfo } from '../../components/componentsPage/ExamInfo'
 import { PageHeader } from '../../components/componentsPage/PageHeader'
 import { SchoolsBoard } from '../../components/componentsPage/SchoolsBoard'
@@ -12,29 +12,26 @@ export const NewExam = () => {
 	const [ examTitle,setExamTitle ] = useState<string>('New Exam Title Here')
 	const questions = useAppSelector(state => state.questions)
 	const dispatch = useAppDispatch()
-
 	const socket = io('wss://front-test-sockets.herokuapp.com')
 
-	useEffect(() => {
-		socket.connect()
+	useEffect(() => {		
 		socket.emit('get data')
-
-		return () => {
-			socket.disconnect()
-		  }
+		return () => {socket.disconnect()}
 	}, [])
 
-	useEffect(() => {		
+	useEffect(() => {	
+		socketGetInfo()
+	}, [ socket ])
+
+	const socketGetInfo = () =>{
 		try {
 			socket.on('data', (data:IExamInfo) => {
-				console.log(1)
-				dispatch(setExamInfo(data))
+				 dispatch(setExamInfo(data))
 			})
 		} catch (error) {
 			throw new Error('error socket')
 		}
-	}, [ socket ])
-	
+	}
     
 	return (
 		<section className='newExam'>

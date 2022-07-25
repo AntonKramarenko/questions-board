@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './InputQuestion.scss'
 import QuestionLogo from '../../../assets/img/question.png'
 import InputLogo from '../../../assets/icons/mountain.png'
 import { SelectImagesBox } from '../SelectImagesBox'
 import { useAppDispatch } from '../../../store'
 import { inputQuestion } from '../../../store/createQuestion'
+import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
 
 
 export const InputQuestion:React.FC = ({}) => {
@@ -14,6 +15,14 @@ export const InputQuestion:React.FC = ({}) => {
 	const [isEmpty, setIsEmpty] = useState(true)
 	const dispatch = useAppDispatch()
 	const inputRef = useRef<HTMLTextAreaElement>(null)
+	const context = useContext(SelectQuestionContext)
+
+	useEffect(() => {
+		if(context && !Array.isArray(context.inputQuestion) ){
+			setQuestionVaue(context.inputQuestion.questionValue)
+			setSelectImages(context.inputQuestion.imagesQuestion)
+		}
+	}, [ context ])
 
 	useEffect(() => {
 		inputRef.current?.focus()
@@ -62,6 +71,7 @@ export const InputQuestion:React.FC = ({}) => {
 					placeholder='Question Text...' 
 					required 
 					wrap='soft' 
+					value={questionValue}
 					onChange={(e)=>writeTextHandler(e)}
 				/>
 				<input type='file' id={'file-uploader-question'} multiple onChange={(e)=> readFile(e)}/>

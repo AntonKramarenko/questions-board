@@ -6,6 +6,7 @@ import { IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer, IMult
 import { QuestionValue } from '../QuestionValue'
 import { useAppDispatch } from '../../../store'
 import { removeQuestion } from '../../../store/questions'
+import { useNavigate } from 'react-router-dom'
 
 interface IQuestionsItem{
 	id:number
@@ -17,11 +18,16 @@ interface IQuestionsItem{
 
 export const QuestionsItem:React.FC<IQuestionsItem> = ({indexValue,questonType, inputQuestion,answer,id}) => {
 	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
 
 	const clickDeleteItemHandler = () => {
 		dispatch(removeQuestion(id))
 	}
-	
+
+	const clickEditHansler = () =>{
+		navigate(`/exams/New-Exam-Title-Here/new-question/${id}`)
+	}
+
 	return (
 		<div className='questionsItem'>
 			<div className='questionsItem__counter'>{indexValue}</div>
@@ -31,7 +37,7 @@ export const QuestionsItem:React.FC<IQuestionsItem> = ({indexValue,questonType, 
 			<div className='questionsItem__standart'>7A</div>
 			<div className='questionsItem__actions'>
 				<TrashIcon click={clickDeleteItemHandler}/>
-				<EditIcon/>
+				<EditIcon click ={clickEditHansler}/>
 			</div>
 		</div>
 	)

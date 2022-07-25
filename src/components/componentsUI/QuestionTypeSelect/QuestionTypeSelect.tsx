@@ -3,8 +3,8 @@ import './QuestionTypeSelect.scss'
 import { IoCaretDownOutline,IoCaretUpOutline } from 'react-icons/io5'
 import ThinkLogo from '../../../assets/img/think.png'
 import { useEffect } from 'react'
-import { useAppDispatch } from '../../../store'
-import { questionType } from '../../../store/createQuestion'
+import { useAppDispatch, useAppSelector } from '../../../store'
+import { changeType, questionType } from '../../../store/createQuestion'
 
 
 interface IQuestionTypeSelect{
@@ -14,8 +14,10 @@ interface IQuestionTypeSelect{
 
 export const QuestionTypeSelect: React.FC<IQuestionTypeSelect> = ({questonType,setType}) => {
 	const [ isVisible,setVisible ] = useState(false)
+	const dispatch = useAppDispatch()
 	
 	const clickValueHandler =(valueType:string) =>{
+		dispatch(changeType())
 		setType(valueType)
 		setVisible(false)
 	}

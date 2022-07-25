@@ -50,9 +50,13 @@ export const createQuestion = createSlice({
 				questionValue:''
 			}
 			state.answer = []
+		},
+		setCreateQuestionValue(state:CreateQuestioState, action:PayloadAction<CreateQuestioState>){
+			//console.log('setCreateQuestionValue',action.payload);
+			return action.payload
 		}
 	}
 })
 
-export const {  questionType,inputQuestion,point,teacherComment,answers,clearCreateQuestion,changeType} = createQuestion.actions
+export const {  questionType,inputQuestion,point,teacherComment,answers,clearCreateQuestion,changeType,setCreateQuestionValue} = createQuestion.actions
 export default createQuestion.reducer

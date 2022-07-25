@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { SelectQuestionContext } from '../../../../pages/AddQuestionPage'
 import { IMatchingItem } from '../../../../types'
 import { SelectImagesBox } from '../../../componentsUI/SelectImagesBox'
 import { UniversalInput } from '../../../componentsUI/UniversalInput'
@@ -15,9 +16,9 @@ export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change
 	const [ imagesAnswer,setImagesAnswer ] = useState<string[]>([])
 	const [ questionValue,setQuestionValue ] = useState<string>('')
 	const [ answerValue,setAnswerValue ] = useState<string>('')
-	const [isInputClick, setInputClick] = useState(false)
-	const [isEmpty, setIsEmpty] = useState(true)
-
+	const [ isInputClick, setInputClick ] = useState(false)
+	const [ isEmpty, setIsEmpty ] = useState(true)
+	const context = useContext(SelectQuestionContext)
 	const dataItem = {
 		id:id,  
 		questionValue:questionValue,
@@ -27,13 +28,33 @@ export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change
 	}
 
 	useEffect(() => {
-		if(imagesQuestion.length || imagesAnswer.length && questionValue || answerValue){
+		if(context){
+			context.answer.forEach((item => {
+				if(item.id === id){
+					setAnswerValue(item.answerValue)
+					setImagesAnswer(item.imagesAnswer)
+				}})
+			)
+			if(Array.isArray(context.inputQuestion)){
+				context.inputQuestion.forEach(item =>{
+					setQuestionValue(item.questionValue)
+					setImagesQuestion(item.imagesQuestion)
+				})
+			}
+		}
+	}, [ context ])
+
+
+	
+	
+	useEffect(() => {
+		if(imagesQuestion.length ||questionValue && imagesAnswer.length || answerValue){
 			setIsEmpty(false)
 			change(dataItem)
 		}else {
 			setIsEmpty(true)
 		}
-	}, [imagesQuestion, imagesAnswer, questionValue,answerValue])
+	}, [ imagesQuestion, imagesAnswer, questionValue,answerValue ])
 
     
 	return (

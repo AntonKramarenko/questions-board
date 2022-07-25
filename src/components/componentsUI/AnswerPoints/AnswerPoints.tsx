@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
 import { useAppDispatch } from '../../../store'
 import { point } from '../../../store/createQuestion'
 import { ButtonOutline } from '../ButtonOutline'
@@ -7,6 +8,13 @@ import './AnswerPoints.scss'
 export const AnswerPoints = () => {
 	const [ answerPoit,setAnswerPoint ] = useState<number>(1)
 	const dispatch = useAppDispatch()
+	const context = useContext(SelectQuestionContext)
+
+	useEffect(() => {
+		if(context ){
+			setAnswerPoint(context.points)
+		}
+	}, [ context ])
 
 	useEffect(() => {
 		dispatch(point(answerPoit))

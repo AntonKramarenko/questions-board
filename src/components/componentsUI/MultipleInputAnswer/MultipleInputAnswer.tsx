@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
 import { SelectImagesBox } from '../SelectImagesBox'
 import { UniversalInput } from '../UniversalInput'
 import './MultipleInputAnswer.scss'
@@ -15,19 +16,34 @@ export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = ({id,setData})
 	const [ isInputClick, setInputClick ] = useState(false)
 	const [ isEmpty, setIsEmpty ] = useState(true)
 	const inputData = {imagesAnswer:selectImagesValue, isCorrectAnswer: isCorrectAnswer,answerValue:answerValue,id: id}
+	const context = useContext(SelectQuestionContext)
 
 	useEffect(() => {
-		if(answerValue.length || selectImagesValue.length) setIsEmpty(false)
-		else setIsEmpty(true)
-
-		setData(inputData)
-	}, [ selectImagesValue, isCorrectAnswer, answerValue ])
-
+		if(context ){
+			context.answer.forEach((item => {
+				if(item.id === id){
+					setAnswerValue(item.answerValue)
+					setSelectImages(item.imagesAnswer)
+					setCorrectAnswer(item.isCorrectAnswer || false)
+				}
+			}))
+		}
+	}, [ context ])
 
 	useEffect(() => {
 		
-	}, [isInputClick])
-	
+		if(isInputClick){
+			if(answerValue.length || selectImagesValue.length) {
+				setData(inputData)
+				setIsEmpty(false)
+			} else {
+				setData(inputData)
+				setIsEmpty(true)
+			}
+
+		}
+	}, [ selectImagesValue, isCorrectAnswer, answerValue ])
+
 	
 	
 	return (

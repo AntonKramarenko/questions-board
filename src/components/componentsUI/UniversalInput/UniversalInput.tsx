@@ -44,6 +44,7 @@ export const UniversalInput:React.FC<IUniversalInput> = (props) => {
 	return (
 		<div className='universalInput'>
 			<textarea 
+				value={inputValue}
 				wrap='soft' 
 				placeholder={placeholder} 
 				onChange={(e)=> writeTextHandler(e)} 

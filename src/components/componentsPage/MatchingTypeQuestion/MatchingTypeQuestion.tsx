@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
 import { useAppDispatch } from '../../../store'
 import { answers, changeType, clearCreateQuestion, inputQuestion } from '../../../store/createQuestion'
 import { IMatchingItem, IMatchingItemAnswer, IMatchingItemQuestion } from '../../../types'
@@ -7,22 +8,17 @@ import { TeacherComments } from '../../componentsUI/TeacherComments/TeacherComme
 import { MatchingQuestionItem } from './MatchingQuestionItem/MatchingQuestionItem'
 import './MatchingTypeQuestion.scss'
 
-export const MatchingTypeQuestion:React.FC = () => {
+export const MatchingTypeQuestion:React.FC = React.memo(() => {
 	const [ questionValues, setQuestionValues ] = useState<IMatchingItem[]>()
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		if(questionValues){
+		if(questionValues ){
 			dispatch(inputQuestion(getQuestion(questionValues)))
 			dispatch(answers(getAnswers(questionValues)))
 		}
-		return () => {
-			dispatch(changeType())
-	    }
 	}, [ questionValues ])
 	
-
-
 	const getQuestion =(arr:IMatchingItem[]) =>{
 		return arr.map((item:IMatchingItemQuestion )=>{
 			return {id:item.id,questionValue: item.questionValue, imagesQuestion: item.imagesQuestion }
@@ -35,8 +31,8 @@ export const MatchingTypeQuestion:React.FC = () => {
 		})
 	}
 	
-
 	const clickItemHandler =(inputValue:IMatchingItem)=>{
+		
 		if(questionValues){
 			const arr = [ ...questionValues, inputValue ].reverse()
 			const filteredData = arr.filter((value, index, self) => self.findIndex(v => v.id === value.id ) === index)
@@ -63,4 +59,4 @@ export const MatchingTypeQuestion:React.FC = () => {
 			<TeacherComments/>
 		</div>
 	)
-}
+})
