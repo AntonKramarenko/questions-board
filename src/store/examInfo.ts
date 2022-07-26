@@ -14,7 +14,6 @@ export const examInfo = createSlice({
 	initialState,
 	reducers: {
 		setExamInfo(state:IExamInfo,actions:PayloadAction<IExamInfo>){
-			console.log(actions.payload)
 			return  state = actions.payload
 		}
 	}

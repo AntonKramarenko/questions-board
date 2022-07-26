@@ -6,10 +6,11 @@ import { MultipleTypeQuestion } from '../MultipleTypeQuestion'
 import { useAppDispatch} from '../../../store'
 import { questionType } from '../../../store/createQuestion'
 import './CeateQuestion.scss'
+import { QUESTIONS } from '../../../types/Enum'
 
 
 export const CeateQuestion:React.FC = React.memo(() => {
-	const [ questonType,setType ] = useState<string>('Multiple choice')
+	const [ questonType,setType ] = useState<string>(QUESTIONS.MULTIPLE_CHOICE)
 	const dispatch = useAppDispatch()
 	const context = useContext(SelectQuestionContext)
 
@@ -28,7 +29,7 @@ export const CeateQuestion:React.FC = React.memo(() => {
 			<div className='ceateQuestion__title'>1. Question Type</div>
 			<QuestionTypeSelect questonType={questonType} setType={setType}/>
 			{
-				questonType === 'Matching' 
+				questonType === QUESTIONS.MATCHING 
 					? <MatchingTypeQuestion />
 					: <MultipleTypeQuestion />
 			}

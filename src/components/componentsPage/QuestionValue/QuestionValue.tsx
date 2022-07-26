@@ -3,6 +3,7 @@ import { ShowAnswer } from '../../componentsUI/ShowAnswer'
 import { ShowQuestion } from '../../componentsUI/ShowQuestion'
 import {  IMatchingItemAnswer, IMatchingItemQuestion, IMultipleInputAnswer, IMultipleInputQuestion } from '../../../types'
 import './QuestionValue.scss'
+import { QUESTIONS } from '../../../types/Enum'
 
 interface IQuestionItemMultiple{
 	questonType:string,
@@ -16,7 +17,7 @@ export const QuestionValue:React.FC<IQuestionItemMultiple> = React.memo((props) 
 
 	return (
 		<div className='questionValue'>
-			{questonType === 'Matching' 
+			{questonType === QUESTIONS.MATCHING
 				? <h5 className='questionValue__type matching'>{questonType}</h5>
 				: <h5 className='questionValue__type multiple'>{questonType}</h5>
 			}
