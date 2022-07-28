@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { SelectQuestionContext } from '../../../../pages/AddQuestionPage'
+import React, {useEffect, useState } from 'react'
 import { SelectImagesBox } from '../../../componentsUI/SelectImagesBox'
 import { UniversalInput } from '../../../componentsUI/UniversalInput'
 import { IMatchingItem } from '../../../../types'
 import './MatchingQuestionItem.scss'
+import { useAppSelector } from '../../../../store'
 
 interface IMatchingQuestionItem{
     id:string,
@@ -18,7 +18,7 @@ export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change
 
 	const [ isInputClick, setInputClick ] = useState(false)
 	const [ isEmpty, setIsEmpty ] = useState(true)
-	const context = useContext(SelectQuestionContext)
+	const createQuestionValue = useAppSelector(state => state.createQuestion)
 
 	const dataItem = {
 		id:id,  
@@ -29,21 +29,23 @@ export const MatchingQuestionItem: React.FC<IMatchingQuestionItem> = ({id,change
 	}
 
 	useEffect(() => {
-		if(context){
-			context.answer.forEach((item => {
+		if(createQuestionValue.id){
+			createQuestionValue.answer.forEach((item => {
 				if(item.id === id){
 					setAnswerValue(item.answerValue)
 					setImagesAnswer(item.imagesAnswer)
 				}})
 			)
-			if(Array.isArray(context.inputQuestion)){
-				context.inputQuestion.forEach(item =>{
-					setQuestionValue(item.questionValue)
-					setImagesQuestion(item.imagesQuestion)
+			if(Array.isArray(createQuestionValue.inputQuestion)){
+				createQuestionValue.inputQuestion.forEach(item =>{
+					if(item.id === id){
+						setQuestionValue(item.questionValue)
+						setImagesQuestion(item.imagesQuestion)
+					}
 				})
 			}
 		}
-	}, [ context ])
+	}, [ createQuestionValue ])
 	
 	useEffect(() => {
 		if(imagesQuestion.length || questionValue && imagesAnswer.length || answerValue){

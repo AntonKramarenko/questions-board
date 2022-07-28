@@ -1,20 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
+import React, {useEffect, useState } from 'react'
 import NoteLogo from '../../../assets/img/note.png'
-import { useAppDispatch } from '../../../store'
+import { useAppDispatch, useAppSelector } from '../../../store'
 import { teacherComment } from '../../../store/createQuestion'
 import './TeacherComments.scss'
 
 export const TeacherComments:React.FC = React.memo(() => {
 	const [ teacherComments,setComments ] = useState<string>('')
-	const context = useContext(SelectQuestionContext)
 	const dispatch = useAppDispatch()
+	const createQuestionValue = useAppSelector(state => state.createQuestion)
 
 	useEffect(() => {
-		if(context ){
-			setComments(context.teacherComment)
+		if(createQuestionValue ){
+			setComments(createQuestionValue.teacherComment)
 		}
-	}, [ context ])
+	}, [ createQuestionValue ])
 
 	useEffect(() => {
 		dispatch(teacherComment(teacherComments))

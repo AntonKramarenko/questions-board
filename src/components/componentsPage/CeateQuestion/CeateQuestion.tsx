@@ -1,9 +1,8 @@
-import React, {  useContext, useEffect, useState } from 'react'
-import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
+import React, {useEffect, useState } from 'react'
 import { QuestionTypeSelect } from '../../componentsUI/QuestionTypeSelect'
 import { MatchingTypeQuestion } from '../MatchingTypeQuestion'
 import { MultipleTypeQuestion } from '../MultipleTypeQuestion'
-import { useAppDispatch} from '../../../store'
+import { useAppDispatch, useAppSelector} from '../../../store'
 import { questionType } from '../../../store/createQuestion'
 import './CeateQuestion.scss'
 import { QUESTIONS } from '../../../types/Enum'
@@ -12,13 +11,13 @@ import { QUESTIONS } from '../../../types/Enum'
 export const CeateQuestion:React.FC = React.memo(() => {
 	const [ questonType,setType ] = useState<string>(QUESTIONS.MULTIPLE_CHOICE)
 	const dispatch = useAppDispatch()
-	const context = useContext(SelectQuestionContext)
+	const createQuestionValue = useAppSelector(state => state.createQuestion)
 
 	useEffect(() => {
-		if(context ){
-			setType(context.questonType)
+		if(createQuestionValue.questonType ){
+			setType(createQuestionValue.questonType)
 		}
-	}, [ context ])
+	}, [ createQuestionValue ])
 
 	useEffect(()=>{
 		dispatch(questionType(questonType))

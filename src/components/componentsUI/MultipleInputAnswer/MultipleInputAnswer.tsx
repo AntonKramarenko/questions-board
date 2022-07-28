@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
+import React, { useEffect, useState } from 'react'
+import { useAppSelector } from '../../../store'
 import { SelectImagesBox } from '../SelectImagesBox'
 import { UniversalInput } from '../UniversalInput'
 import './MultipleInputAnswer.scss'
@@ -15,13 +15,13 @@ export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = React.memo(({i
 	const [ answerValue,setAnswerValue ] = useState<string>('')
 	const [ isInputClick, setInputClick ] = useState(false)
 	const [ isEmpty, setIsEmpty ] = useState(true)
-	const context = useContext(SelectQuestionContext)
+	const createQuestionValue = useAppSelector(state => state.createQuestion)
 
 	const inputData = {imagesAnswer:selectImagesValue, isCorrectAnswer: isCorrectAnswer,answerValue:answerValue,id: id}
 
 	useEffect(() => {
-		if(context ){
-			context.answer.forEach((item => {
+		if(createQuestionValue ){
+			createQuestionValue.answer.forEach((item => {
 				if(item.id === id){
 					setAnswerValue(item.answerValue)
 					setSelectImages(item.imagesAnswer)
@@ -29,7 +29,7 @@ export const MultipleInputAnswer:React.FC<IMultipleInputAnswer> = React.memo(({i
 				}
 			}))
 		}
-	}, [ context ])
+	}, [ createQuestionValue ])
 
 	useEffect(() => {
 		if(isInputClick){

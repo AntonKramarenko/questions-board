@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, {useEffect, useRef, useState } from 'react'
 import { SelectImagesBox } from '../SelectImagesBox'
-import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
 import QuestionLogo from '../../../assets/img/question.png'
 import InputLogo from '../../../assets/icons/mountain.png'
-import { useAppDispatch } from '../../../store'
+import { useAppDispatch, useAppSelector } from '../../../store'
 import { inputQuestion } from '../../../store/createQuestion'
 import './InputQuestion.scss'
 
@@ -13,8 +12,8 @@ export const InputQuestion:React.FC = React.memo(({}) => {
 	const [ isInputClick, setInputClick ] = useState<boolean>(false)
 	const [ isEmpty, setIsEmpty ] = useState<boolean>(true)
 	const dispatch = useAppDispatch()
+	const createQuestionValue = useAppSelector(state => state.createQuestion)
 	const inputRef = useRef<HTMLTextAreaElement>(null)
-	const context = useContext(SelectQuestionContext)
 
 	useEffect(() => {
 		inputRef.current?.focus()
@@ -24,11 +23,11 @@ export const InputQuestion:React.FC = React.memo(({}) => {
 	}, [])
 
 	useEffect(() => {
-		if(context && !Array.isArray(context.inputQuestion) ){
-			setQuestionVaue(context.inputQuestion.questionValue)
-			setSelectImages(context.inputQuestion.imagesQuestion)
+		if(createQuestionValue && !Array.isArray(createQuestionValue.inputQuestion) ){
+			setQuestionVaue(createQuestionValue.inputQuestion.questionValue)
+			setSelectImages(createQuestionValue.inputQuestion.imagesQuestion)
 		}
-	}, [ context ])
+	}, [ createQuestionValue ])
 
 	useEffect(() => {
 		if(questionValue.length || selectImages.length) setIsEmpty(false)
@@ -71,7 +70,7 @@ export const InputQuestion:React.FC = React.memo(({}) => {
 					value={questionValue}
 					onChange={(e)=>writeTextHandler(e)}
 				/>
-				<input type='file' id={'file-uploader-question'} multiple onChange={(e)=> readFile(e)}/>
+				<input type='file' id={'file-uploader-question'} multiple onChange={readFile}/>
 				<label htmlFor={'file-uploader-question'}>
 					<img src={InputLogo} alt='inputFile' />
 				</label>

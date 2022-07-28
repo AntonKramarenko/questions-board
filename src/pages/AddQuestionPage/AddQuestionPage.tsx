@@ -8,8 +8,6 @@ import {  clearCreateQuestion, setCreateQuestionValue } from '../../store/create
 import { addQuestion, changeQuestion } from '../../store/questions'
 import './AddQuestionPage.scss'
 
-export const SelectQuestionContext = React.createContext< IQuestionState| null>(null)
-
 export const AddQuestionPage:React.FC = React.memo(() => {
 	const [ isCanSave, setCanSave ] = useState<boolean>(false)
 	const [ editQuestionValue, setEditQuestionValue ] = useState<IQuestionState | null>(null)
@@ -84,10 +82,7 @@ export const AddQuestionPage:React.FC = React.memo(() => {
 				titleApprove={editQuestionValue ? 'Save changes' :'Save Question' }
 			/>
 			<div className='addQuestionPage__box'>
-				<SelectQuestionContext.Provider value={editQuestionValue}>
-					<CeateQuestion />	
-				</SelectQuestionContext.Provider>		
-							
+				<CeateQuestion />						
 			</div>
 		</div>
 	)

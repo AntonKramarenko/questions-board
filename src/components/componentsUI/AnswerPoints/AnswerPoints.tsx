@@ -1,18 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { SelectQuestionContext } from '../../../pages/AddQuestionPage'
+import React, { useEffect, useState } from 'react'
 import { ButtonOutline } from '../ButtonOutline'
-import { useAppDispatch } from '../../../store'
+import { useAppDispatch, useAppSelector } from '../../../store'
 import { point } from '../../../store/createQuestion'
 import './AnswerPoints.scss'
 
 export const AnswerPoints:React.FC = React.memo(() => {
 	const [ answerPoit,setAnswerPoint ] = useState<number>(1)
 	const dispatch = useAppDispatch()
-	const context = useContext(SelectQuestionContext)
+	const createQuestionValue = useAppSelector(state => state.createQuestion)
 
 	useEffect(() => {
-		if(context ) setAnswerPoint(context.points)
-	}, [ context ])
+		if(createQuestionValue ) setAnswerPoint(createQuestionValue.points)
+	}, [ createQuestionValue ])
 
 	useEffect(() => {
 		dispatch(point(answerPoit))
@@ -30,7 +29,7 @@ export const AnswerPoints:React.FC = React.memo(() => {
 				<div className='answerPoints__value'>{answerPoit}</div>
 				<span className='answerPoints__text'>point for the right answer</span>
 			</div>
-			<ButtonOutline btnName='Change' click={()=>setAnswerPointsHandler()}/>
+			<ButtonOutline btnName='Change' click={setAnswerPointsHandler}/>
 		</div>
 	)
 })
